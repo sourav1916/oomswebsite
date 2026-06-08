@@ -1,0 +1,429 @@
+import type { TeamMember } from '../types/team';
+
+export interface ServiceItem {
+  id: string;
+  title: string;
+  shortDesc: string;
+  longDesc: string;
+  features: string[];
+  benefits: string[];
+  iconName: string;
+  path: string;
+}
+
+export interface IndustryItem {
+  id: string;
+  name: string;
+  desc: string;
+  features: string[];
+  iconName: string;
+}
+
+export interface TestimonialItem {
+  id: string;
+  name: string;
+  role: string;
+  firm: string;
+  text: string;
+  rating: number;
+}
+
+export interface FAQItem {
+  category: 'general' | 'features' | 'security' | 'pricing';
+  question: string;
+  answer: string;
+}
+
+export interface StatItem {
+  label: string;
+  value: string;
+  numericValue: number;
+  suffix: string;
+}
+
+export interface TrustIndicator {
+  title: string;
+  description: string;
+  iconName: string;
+}
+
+export interface SiteConfig {
+  companyName: string;
+  shortName: string;
+  tagline: string;
+  description: string;
+  websiteUrl: string;
+  supportEmail: string;
+  salesEmail: string;
+  phoneNumbers: string[];
+  whatsappNumber: string;
+  whatsappMessage: string;
+  address: string;
+  googleMapsEmbedUrl: string;
+  businessHours: {
+    weekdays: string;
+    saturday: string;
+    sunday: string;
+  };
+  socialLinks: {
+    twitter?: string;
+    linkedin?: string;
+    facebook?: string;
+    youtube?: string;
+  };
+  services: ServiceItem[];
+  industries: IndustryItem[];
+  testimonials: TestimonialItem[];
+  faqs: FAQItem[];
+  stats: StatItem[];
+  trustIndicators: TrustIndicator[];
+  teamMembers: TeamMember[];
+  seoDefaults: {
+    titleTemplate: string;
+    defaultTitle: string;
+    defaultDescription: string;
+    openGraph: {
+      type: string;
+      locale: string;
+      siteName: string;
+    };
+    twitter: {
+      handle: string;
+      site: string;
+      cardType: string;
+    };
+  };
+}
+
+export const siteConfig: SiteConfig = {
+  companyName: "OneSaaS Office Management System",
+  shortName: "OOMS",
+  tagline: "The Ultimate Cloud ERP & CRM for Tax & Accounting Professionals",
+  description: "Automate task management, client relationships, staff attendance, billing, and bulk communications on India's most secure cloud-based office management platform built for CAs, CSs, CMAs, Advocates, and Tax Consultants.",
+  websiteUrl: "https://ooms.in",
+  supportEmail: "support@ooms.in",
+  salesEmail: "sales@ooms.in",
+  phoneNumbers: ["+91 80 4567 8901", "+91 98765 43210"],
+  whatsappNumber: "919876543210",
+  whatsappMessage: "Hi OOMS team, I am interested in scheduling a live demo of the Office Management System. Please assist.",
+  address: "OneSaaS Technologies Pvt. Ltd., 4th Floor, Innovation Wing, Koramangala Inner Ring Road, Bengaluru, Karnataka - 560034",
+  googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.7505295982845!2d77.62211937573539!3d12.923773115934509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae14878a87b5a1%3A0xc3ec5bf87eb098b6!2sKoramangala%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
+  businessHours: {
+    weekdays: "Monday - Friday: 9:00 AM - 6:30 PM IST",
+    saturday: "Saturday: 9:00 AM - 2:00 PM IST",
+    sunday: "Sunday: Closed"
+  },
+  socialLinks: {
+    linkedin: "https://linkedin.com/company/ooms-onesaas",
+    twitter: "https://twitter.com/ooms_onesaas",
+    facebook: "https://facebook.com/ooms.onesaas",
+    youtube: "https://youtube.com/c/ooms-onesaas"
+  },
+  services: [
+    {
+      id: "client-management-crm",
+      title: "Client Relationship Management (CRM)",
+      shortDesc: "Centralize your client information, historical records, and filing statuses in a secure cloud database.",
+      longDesc: "Manage all aspects of your clients' records from one unified CRM module. OOMS enables tax practitioners, Chartered Accountants, and Advocates to digitize client folders, store demographic information, maintain PAN/GSTIN registries, track individual filing histories, and categorize clients by vertical or service requirements.",
+      features: [
+        "Comprehensive client profile records with custom tags",
+        "GSTIN, PAN, TAN, and ITR category registry with bulk validity checks",
+        "Direct link between clients and assigned staff members",
+        "Client logs for communications, notes, and activity histories"
+      ],
+      benefits: [
+        "Eliminate paper client folders and lost paperwork",
+        "Retrieve client KYC details and historical interactions in seconds",
+        "Segment clients easily for tailored tax advice or compliance reminders"
+      ],
+      iconName: "Users",
+      path: "/services/client-management-crm"
+    },
+    {
+      id: "task-workflow-automation",
+      title: "Task & Workflow Automation",
+      shortDesc: "Automate and track recurring statutory tasks like GST, ITR, TDS, and Audit deadlines.",
+      longDesc: "Stop relying on spreadsheets or mental checklists. The OOMS Task and Workflow module lets you set up automatic templates for recurring returns (monthly GST, quarterly TDS, annual audits). Managers can set milestones, assign sub-tasks, delegate to juniors, monitor progress in real-time, and run multi-level review approvals before final filing.",
+      features: [
+        "Recurring task generation based on standard Indian tax calendars",
+        "Dynamic task statuses (Not Started, In Progress, Client Pending, Under Review, Completed)",
+        "Sub-task creation, checklist enforcement, and custom milestones",
+        "Multi-stage review pipelines (Article Clerk -> Manager -> Partner)"
+      ],
+      benefits: [
+        "Never miss a filing deadline, protecting your clients from late fees",
+        "Real-time visual monitoring of office capacity and bottleneck detection",
+        "Enforce standardization across complex filings with strict checklists"
+      ],
+      iconName: "CheckSquare",
+      path: "/services/task-workflow-automation"
+    },
+    {
+      id: "staff-attendance-timesheets",
+      title: "Staff Attendance & Timesheets",
+      shortDesc: "Monitor office productivity, timesheets, and staff check-ins through individual logins.",
+      longDesc: "Optimize resource utilization and manage team productivity. With dedicated portal credentials, your team can check in daily, record precise hours spent on specific client tasks, submit digital timesheets, and log out-of-office client visits. Partners get full dashboard analytics detailing exact time cost per filing, billable vs non-billable hours, and team capacity.",
+      features: [
+        "Secure individual staff login credentials with configurable access roles",
+        "Daily attendance log with Web Punch-In/Out and location options",
+        "Task-based timesheet logging with automated hours accumulation",
+        "Analytics reports on staff workload, idle time, and task efficiency"
+      ],
+      benefits: [
+        "Calculate exact profit margins per client and service",
+        "Monitor article clerk activity and overall office productivity remotely",
+        "Streamline monthly payroll processing with auto-generated attendance logs"
+      ],
+      iconName: "Clock",
+      path: "/services/staff-attendance-timesheets"
+    },
+    {
+      id: "expense-billing-management",
+      title: "Finance & Invoicing System",
+      shortDesc: "Generate professional invoices, track expenses, and automate outstanding payment alerts.",
+      longDesc: "Improve cash flow with professional billing and automated collection workflows. OOMS tracks out-of-pocket expenses incurred during client representations, merges them into standard digital invoices, and enables payment links. Send auto-reminders for outstanding fees, accept online payments, and keep your firm's internal books in perfect order.",
+      features: [
+        "Professional invoicing templates with automated GST calculations",
+        "Out-of-pocket and travel expense ledger mapped to specific client jobs",
+        "Automatic email/WhatsApp payment reminders for unpaid invoices",
+        "Billing dashboards displaying outstanding receivables, cash flow, and monthly revenue"
+      ],
+      benefits: [
+        "Reduce collection cycles and outstanding debts by up to 40%",
+        "Prevent unbilled out-of-pocket expenses from slipping through the cracks",
+        "Professionalize your billing system with neat, digital, tax-compliant invoices"
+      ],
+      iconName: "CreditCard",
+      path: "/services/expense-billing-management"
+    },
+    {
+      id: "broadcast-communication-tools",
+      title: "WhatsApp & Broadcast Tools",
+      shortDesc: "Send bulk alerts, filing due dates, and greetings via WhatsApp, SMS, and Email.",
+      longDesc: "Keep your clients informed and compliant. OOMS integrates smart broadcasting capabilities, allowing you to send targeted notifications to clients based on service type. Send automated WhatsApp reminders for due dates, gather missing documents, broadcast regulatory news alerts, or send festive greetings in one click.",
+      features: [
+        "Integrated WhatsApp API broadcasting to clients' mobile numbers",
+        "Targeted client lists filtered by service category or filing pending status",
+        "Pre-approved templates for statutory due dates, outstanding fees, and tax updates",
+        "Multi-channel support: Whatsapp, SMS, and Email dispatched simultaneously"
+      ],
+      benefits: [
+        "Drastically increase client response times compared to ignored emails",
+        "Position your firm as a tech-forward partner with proactive updates",
+        "Save manual follow-up time by automating broad notifications"
+      ],
+      iconName: "MessageSquare",
+      path: "/services/broadcast-communication-tools"
+    },
+    {
+      id: "secure-document-vault",
+      title: "Secure Cloud Document Vault",
+      shortDesc: "Store, organize, and retrieve client returns, digital certificates, and KYC securely.",
+      longDesc: "Say goodbye to scattered files across physical computers or unsafe shared drives. The OOMS Secure Document Vault provides a structured cloud storage space for every client. Upload copies of IT acknowledgements, tax audit reports, registration certificates, digital signatures, and accounting statements, accessible from any device.",
+      features: [
+        "Structured, per-client nested folders for organized document storage",
+        "Secure cloud backups with high-grade encryption protocols",
+        "Upload and store large files (PDFs, Excel sheets, XML files, images)",
+        "Granular file access control for partners, staff, and clients"
+      ],
+      benefits: [
+        "Access client documents 24/7 from home, office, or client meetings",
+        "Prevent accidental data loss from local hard drive failures",
+        "Maintain clean data hygiene and compliance with bank-grade security"
+      ],
+      iconName: "Shield",
+      path: "/services/secure-document-vault"
+    }
+  ],
+  industries: [
+    {
+      id: "chartered-accountants",
+      name: "Chartered Accountants (CAs)",
+      desc: "Streamline comprehensive audit tasks, track complex tax audits, and manage article clerks under a unified hierarchy.",
+      features: [
+        "Article clerk timesheet approval pipelines",
+        "Audit check-lists and documentation logs",
+        "Tax audit deadline tracking with automatic client alerts"
+      ],
+      iconName: "Briefcase"
+    },
+    {
+      id: "company-secretaries",
+      name: "Company Secretaries (CS)",
+      desc: "Keep up with ROC filings, corporate governance deadlines, minute book registries, and annual compliance schedules.",
+      features: [
+        "ROC event-based filing checklists",
+        "Incorporation documentation manager",
+        "Board meeting schedules and resolution databases"
+      ],
+      iconName: "BookOpen"
+    },
+    {
+      id: "tax-consultants",
+      name: "Tax Consultants & GST Practitioners",
+      desc: "Automate high-volume monthly GST filings, quarterly TDS schedules, and individual income tax returns.",
+      features: [
+        "Bulk GSTIN return status check dashboards",
+        "Automated WhatsApp broadcasting for due dates",
+        "TDS filing tracking and client challan management"
+      ],
+      iconName: "FileText"
+    },
+    {
+      id: "advocates-lawyers",
+      name: "Advocates & Legal Practitioners",
+      desc: "Manage case files, track hearing dates, store client petitions, and log billable litigation hours.",
+      features: [
+        "Hearing date reminder system",
+        "Client petition and legal document drafts vault",
+        "Case-by-case expense and retainership fee ledger"
+      ],
+      iconName: "Scale"
+    },
+    {
+      id: "corporate-finance-firms",
+      name: "Corporate Finance & Accounting Firms",
+      desc: "Scale your external bookkeeping and outsourced CFO workflows, handling client portfolios with enterprise efficiency.",
+      features: [
+        "Bookkeeping checklist standard operating procedures (SOPs)",
+        "Client financial performance dashboarding",
+        "Integrated multi-firm consolidated work views"
+      ],
+      iconName: "Building"
+    }
+  ],
+  testimonials: [
+    {
+      id: "t1",
+      name: "CA Ramesh Sharma",
+      role: "Senior Partner",
+      firm: "Sharma & Associates CAs",
+      text: "Switching our office management to OOMS was the best business decision we made. We have 12 article clerks and 1500+ clients; tracking returns on Excel sheets was a nightmare. OOMS automated our task checklists and late filings dropped to zero.",
+      rating: 5
+    },
+    {
+      id: "t2",
+      name: "CS Ananya Mehta",
+      role: "Founder",
+      firm: "Mehta Corporate Compliance Services",
+      text: "The ROC calendars and event-based checklists are outstanding. My team logs timesheets daily, and I can bill clients accurately based on the exact hours spent. OOMS has boosted our operational efficiency by at least 45%.",
+      rating: 5
+    },
+    {
+      id: "t3",
+      name: "Adv. Vikramaditya Sen",
+      role: "Managing Advocate",
+      firm: "Sen & Sen Legal Chamber",
+      text: "Client trust is paramount for lawyers, and data security is our biggest concern. OOMS's encrypted document vault and secure role-based access gave us the confidence to take our legal practice to the cloud. Recommended for every law office.",
+      rating: 5
+    },
+    {
+      id: "t4",
+      name: "Amit Patel",
+      role: "Founder & Tax Consultant",
+      firm: "Patel Tax Services",
+      text: "The WhatsApp Broadcasting tool is worth the subscription price alone! I can filter all clients whose GST filings are pending and send them a automated due date reminder in one click. Clients reply immediately and send documents.",
+      rating: 5
+    }
+  ],
+  faqs: [
+    {
+      category: "general",
+      question: "What is OOMS, and who is it designed for?",
+      answer: "OOMS (OneSaaS Office Management System) is a secure, cloud-based ERP and CRM designed specifically for professional services firms in India, including Chartered Accountants (CAs), Company Secretaries (CSs), Cost Accountants (CMAs), Tax Practitioners, Advocates, and accounting firms."
+    },
+    {
+      category: "general",
+      question: "Is there a desktop software installation required?",
+      answer: "No, OOMS is a 100% cloud-native SaaS application. You do not need to install any heavy software. You can access it securely from any modern web browser on your laptop, desktop, tablet, or smartphone."
+    },
+    {
+      category: "features",
+      question: "How does the WhatsApp Broadcast feature work?",
+      answer: "OOMS integrates directly with official messaging gateways, enabling you to select specific groups of clients (e.g., GST-pending clients) and broadcast customized reminders, due-date notices, or documents directly to their WhatsApp numbers. This features helps firms bypass ignored emails and speed up client updates."
+    },
+    {
+      category: "features",
+      question: "Can I manage staff attendance and check-in times?",
+      answer: "Yes! OOMS provides separate login accounts for every employee. Employees can log attendance via Web Punch-In, submit detailed daily timesheets explaining hours spent on specific client tasks, and request leaves. Partners get full dashboard transparency into staff workloads."
+    },
+    {
+      category: "security",
+      question: "How secure is my clients' sensitive financial data?",
+      answer: "We treat security as our highest priority. All data transmitted to OOMS is encrypted using bank-grade 256-bit SSL encryption. Data is stored on secure, highly redundant cloud servers with ISO 27001 data center compliances, physical security, and regular automatic backups."
+    },
+    {
+      category: "security",
+      question: "Can I control which client files my junior staff can see?",
+      answer: "Absolutely. OOMS implements granular, role-based access control (RBAC). You can define user roles (Partner, Manager, Senior, Junior, Article Clerk) and restrict access to sensitive financial metrics, billing modules, or specific premium client profiles."
+    },
+    {
+      category: "pricing",
+      question: "What subscription options are available, and is there a free trial?",
+      answer: "OOMS offers flexible, scale-as-you-grow plans available on monthly, quarterly, and annual subscription cycles based on your team size. We offer a 7-day risk-free trial of all premium features, and our sales team is happy to schedule a customized live demo."
+    }
+  ],
+  stats: [
+    { label: "Active Firms Trusting Us", value: "15K+", numericValue: 15000, suffix: "+" },
+    { label: "Tasks & Return Filings Automated", value: "5M+", numericValue: 5, suffix: "M+" },
+    { label: "Active Staff & Client Portals", value: "150K+", numericValue: 150000, suffix: "+" },
+    { label: "Server Architecture Uptime", value: "99.99%", numericValue: 99.99, suffix: "%" }
+  ],
+  trustIndicators: [
+    {
+      title: "ISO 27001 Certified",
+      description: "Adhering to strict international standards for information security management.",
+      iconName: "ShieldCheck"
+    },
+    {
+      title: "GDPR Compliant",
+      description: "Data privacy practices designed to protect user identity and proprietary files.",
+      iconName: "UserCheck"
+    },
+    {
+      title: "Bank-Grade Encryption",
+      description: "Active 256-bit SSL encryption safeguards all data transmission and database storage.",
+      iconName: "Lock"
+    },
+    {
+      title: "100% Made in India",
+      description: "Designed specifically to address Indian compliance, GST calendars, and taxation workflows.",
+      iconName: "Flag"
+    }
+  ],
+  teamMembers: [
+    {
+      id: 1,
+      name: "Mubarak Ali",
+      designation: "Founder & CEO",
+      image: "https://ooms.in/uploads/ooms/mubarak.png",
+      bio: "Visionary leader driving innovation, client success, and long-term product strategy for professional firms.",
+      linkedin: "",
+      email: ""
+    },
+    {
+      id: 2,
+      name: "Sourav Kr Adhikary",
+      designation: "Lead Developer",
+      image: "https://ooms.in/uploads/ooms/sourav.png",
+      bio: "Leading product engineering, scalable software architecture, and secure cloud delivery for the OOMS platform.",
+      linkedin: "",
+      email: ""
+    }
+  ],
+  seoDefaults: {
+    titleTemplate: "%s | OOMS - OneSaaS Office Management System",
+    defaultTitle: "OOMS | Cloud Office Management System for CAs, CSs, and Tax Professionals",
+    defaultDescription: "Simplify your practice with OOMS. Automate task tracking, client CRM, article clerk timesheets, billing, and WhatsApp broadcasting in one secure dashboard.",
+    openGraph: {
+      type: "website",
+      locale: "en_IN",
+      siteName: "OOMS OneSaaS"
+    },
+    twitter: {
+      handle: "@ooms_onesaas",
+      site: "@ooms_onesaas",
+      cardType: "summary_large_image"
+    }
+  }
+};
