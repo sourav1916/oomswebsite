@@ -41,7 +41,7 @@ const TeamCard: React.FC<{ member: TeamMember }> = ({ member }) => {
     <motion.article
       variants={cardVariants}
       whileHover={{ y: -8, scale: 1.01 }}
-      className="group relative overflow-hidden rounded-3xl border border-border bg-surface p-4 shadow-xl shadow-slate-900/8 transition-colors duration-300 dark:shadow-slate-950/25"
+      className="group relative overflow-hidden rounded-3xl border border-border bg-surface p-4 shadow-xl shadow-foreground/5 transition-colors duration-300 dark:shadow-slate-950/25"
     >
       <div className="relative aspect-[4/4.4] overflow-hidden rounded-2xl border border-border bg-muted">
         <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary-100 via-white to-indigo-100 text-4xl font-heading font-extrabold text-primary-700 dark:from-primary-950/50 dark:via-slate-900 dark:to-indigo-950/50 dark:text-primary-300">
@@ -68,7 +68,7 @@ const TeamCard: React.FC<{ member: TeamMember }> = ({ member }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${member.name} on LinkedIn`}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-slate-900 shadow-lg transition hover:bg-primary-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-slate-950 dark:text-white"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-background text-foreground shadow-lg transition hover:bg-primary-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-slate-950 dark:text-white"
               >
                 <Linkedin className="h-4 w-4" />
                 <span className="sr-only">{member.name} on LinkedIn</span>
@@ -78,7 +78,7 @@ const TeamCard: React.FC<{ member: TeamMember }> = ({ member }) => {
               <a
                 href={`mailto:${member.email}`}
                 aria-label={`Email ${member.name}`}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-slate-900 shadow-lg transition hover:bg-primary-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-slate-950 dark:text-white"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-background text-foreground shadow-lg transition hover:bg-primary-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-slate-950 dark:text-white"
               >
                 <Mail className="h-4 w-4" />
                 <span className="sr-only">Email {member.name}</span>
@@ -93,7 +93,7 @@ const TeamCard: React.FC<{ member: TeamMember }> = ({ member }) => {
           <h3 className="font-heading text-xl font-extrabold leading-tight text-foreground">{member.name}</h3>
           <p className="mt-1 text-sm font-bold text-primary-600 dark:text-primary-400">{member.designation}</p>
         </div>
-        {member.bio && <p className="text-sm leading-relaxed text-muted-foreground">{member.bio}</p>}
+        {member.bio && <p className="text-sm leading-relaxed text-text-sub font-medium">{member.bio}</p>}
       </div>
     </motion.article>
   );

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll } from 'framer-motion';
 import { Layers, Menu, X, ArrowRight } from 'lucide-react';
-import { siteConfig } from '../config/siteConfig';
-import { ThemeToggle } from './ThemeToggle';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +30,9 @@ export const Navbar: React.FC = () => {
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
     { name: 'Industries', path: '/industries' },
+    { name: 'Pricing', path: '/pricing' },
     { name: 'About Us', path: '/about' },
+    { name: 'Business Policy', path: '/business-policy' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -48,21 +48,21 @@ export const Navbar: React.FC = () => {
       <header
         className={`sticky top-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-white/95 py-3 shadow-lg shadow-slate-900/8 ring-1 ring-slate-200/80 backdrop-blur-xl dark:bg-slate-950/85 dark:shadow-slate-950/25 dark:ring-slate-800'
-            : 'bg-white/90 py-4 shadow-sm shadow-slate-900/5 ring-1 ring-slate-200/70 backdrop-blur-xl dark:bg-slate-950/75 dark:ring-slate-800/80'
+            ? 'bg-background/95 py-3 shadow-lg shadow-foreground/5 ring-1 ring-border backdrop-blur-xl dark:bg-slate-950/85 dark:shadow-slate-950/25 dark:ring-slate-800'
+            : 'bg-background/90 py-4 shadow-sm shadow-foreground/5 ring-1 ring-border/70 backdrop-blur-xl dark:bg-slate-950/75 dark:ring-slate-800/80'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-700 via-primary-600 to-indigo-600 shadow-md shadow-primary-600/30 text-white ring-1 ring-primary-300/40">
-              <Layers className="w-5.5 h-5.5 transform group-hover:rotate-12 transition-transform duration-300" />
+          <Link to="/" className="flex items-center space-x-2.5 group">
+            <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-tr from-primary-600 to-indigo-600 shadow-lg shadow-primary-600/20 text-white ring-1 ring-white/20 transform group-hover:scale-105 transition-all duration-300">
+              <Layers className="w-6 h-6 transform group-hover:rotate-12 transition-transform duration-300" />
             </div>
             <div className="flex flex-col">
-              <span className="font-heading font-extrabold text-xl leading-none tracking-tight text-foreground">
+              <span className="font-heading font-black text-2xl leading-none tracking-tighter text-foreground group-hover:text-primary-600 transition-colors">
                 OOMS
               </span>
-              <span className="text-[9px] font-bold uppercase tracking-widest text-primary-700 dark:text-primary-300 mt-0.5">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mt-0.5">
                 OneSaaS Cloud
               </span>
             </div>
@@ -74,17 +74,17 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`relative px-4 py-2 rounded-lg font-heading text-sm font-semibold tracking-wide transition-all duration-300 ${
+                className={`relative px-4 py-2 rounded-xl font-heading text-sm font-bold tracking-wide transition-all duration-300 ${
                   isActive(link.path)
-                    ? 'text-primary-800 dark:text-primary-300 bg-primary-100/80 dark:bg-primary-950/35'
-                    : 'text-slate-800 dark:text-slate-200 hover:text-primary-800 dark:hover:text-primary-300 hover:bg-slate-100 dark:hover:bg-slate-900/70'
+                    ? 'text-primary-600 bg-primary-50/50 dark:bg-primary-950/30'
+                    : 'text-text-sub dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-surface-hover dark:hover:bg-slate-900/60'
                 }`}
               >
                 {link.name}
                 {isActive(link.path) && (
                   <motion.div
                     layoutId="activeNav"
-                    className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-primary-500 to-indigo-400 rounded-full"
+                    className="absolute bottom-1 left-4 right-4 h-0.5 bg-primary-500 rounded-full"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -94,22 +94,30 @@ export const Navbar: React.FC = () => {
 
           {/* Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <ThemeToggle />
-            <Link
-              to="/contact"
-              className="inline-flex items-center space-x-1.5 px-4.5 py-2.5 rounded-xl font-heading text-sm font-bold bg-primary-700 hover:bg-primary-800 active:bg-primary-900 text-white shadow-lg shadow-primary-700/25 hover:shadow-primary-700/35 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            <a
+              href="https://ooms.in/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl font-heading text-sm font-bold text-text-sub border border-border hover:border-primary-400 hover:text-primary-600 transition-all duration-300 cursor-pointer"
             >
-              <span>Schedule Demo</span>
+              <span>Login</span>
+            </a>
+            <a
+              href="https://ooms.in/register"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl font-heading text-sm font-bold bg-primary-600 hover:bg-primary-700 active:bg-primary-800 text-white shadow-lg shadow-primary-600/20 hover:shadow-primary-600/30 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            >
+              <span>Get Started</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="flex items-center space-x-2 md:hidden">
-            <ThemeToggle />
+          <div className="flex items-center space-x-3 md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-xl border border-slate-200 bg-white text-slate-800 shadow-sm hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 active:scale-95 cursor-pointer"
+              className="p-2.5 rounded-xl border border-border bg-background text-text-sub shadow-sm hover:bg-surface-hover hover:text-primary-600 hover:border-primary-200 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-primary-400 active:scale-95 cursor-pointer transition-all duration-300"
               aria-label="Toggle mobile menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -132,7 +140,7 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden absolute top-[65px] left-0 right-0 z-40 border-b border-slate-200 bg-white/95 shadow-xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/95"
+            className="md:hidden absolute top-[65px] left-0 right-0 z-40 border-b border-border bg-background/95 shadow-xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/95"
           >
             <div className="px-4 pt-3 pb-6 space-y-2 flex flex-col">
               {navLinks.map((link) => (
@@ -142,20 +150,30 @@ export const Navbar: React.FC = () => {
                   className={`px-4 py-3 rounded-xl font-heading text-base font-bold transition-all duration-200 ${
                     isActive(link.path)
                       ? 'text-primary-800 dark:text-primary-300 bg-primary-100 dark:bg-primary-950/40'
-                      : 'text-slate-800 dark:text-slate-200 hover:text-primary-800 dark:hover:text-primary-300 hover:bg-slate-100 dark:hover:bg-slate-900/60'
+                      : 'text-foreground dark:text-slate-200 hover:text-primary-800 dark:hover:text-primary-300 hover:bg-surface-hover dark:hover:bg-slate-900/60'
                   }`}
                 >
                   {link.name}
                 </Link>
               ))}
-              <div className="pt-4 border-t border-border">
-                <Link
-                  to="/contact"
-                  className="w-full flex items-center justify-center space-x-2 py-3.5 rounded-xl font-heading font-bold bg-primary-600 text-white shadow-lg shadow-primary-600/10 active:scale-98 cursor-pointer"
+              <div className="pt-4 border-t border-border flex flex-col gap-3">
+                <a
+                  href="https://ooms.in/login"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center space-x-2 py-3.5 rounded-xl font-heading font-bold border border-border text-foreground hover:bg-surface-hover active:scale-98 cursor-pointer transition-all duration-200"
                 >
-                  <span>Schedule Demo</span>
+                  <span>Login</span>
+                </a>
+                <a
+                  href="https://ooms.in/register"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center space-x-2 py-3.5 rounded-xl font-heading font-bold bg-primary-600 text-white shadow-lg shadow-primary-600/10 active:scale-98 cursor-pointer hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  <span>Get Started Free</span>
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </a>
               </div>
             </div>
           </motion.div>

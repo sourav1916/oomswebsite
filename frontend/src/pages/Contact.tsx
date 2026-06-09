@@ -31,34 +31,34 @@ export const Contact: React.FC = () => {
         ]}
       />
 
-      <div className="mx-auto max-w-7xl space-y-16 px-4 py-12 sm:px-6 lg:px-8">
-        <section className="mx-auto max-w-3xl space-y-4 text-center">
-          <span className="font-heading text-xs font-bold uppercase tracking-widest text-primary-500 dark:text-primary-400">
+      <div className="mx-auto max-w-7xl space-y-16 px-4 py-20 sm:px-6 lg:px-8">
+        <section className="mx-auto max-w-3xl space-y-5 text-center">
+          <span className="font-heading text-xs font-black uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
             Connect With Us
           </span>
-          <h1 className="font-heading text-3xl font-extrabold leading-tight text-foreground sm:text-5xl">
+          <h1 className="font-heading text-4xl font-black leading-[0.95] text-foreground sm:text-6xl tracking-tighter">
             Schedule a Live Platform Demonstration
           </h1>
-          <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+          <p className="text-lg leading-relaxed text-text-sub sm:text-xl font-medium">
             Speak with a product specialist about workflows, data migration, access control, and the rollout plan for your team.
           </p>
         </section>
 
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
           <aside className="space-y-8 lg:col-span-5">
-            <div className="space-y-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-lg dark:border-slate-800 dark:bg-slate-900 sm:p-8">
-              <h2 className="font-heading text-lg font-extrabold text-foreground">Contact Information</h2>
+            <div className="space-y-8 rounded-[40px] border border-border bg-surface p-8 shadow-2xl shadow-foreground/5 dark:border-slate-800 dark:bg-slate-900 sm:p-10">
+              <h2 className="font-heading text-2xl font-black text-foreground tracking-tight">Contact Information</h2>
 
-              <div className="space-y-5">
-                <div className="flex items-start gap-4">
-                  <InfoIcon icon={<Phone className="h-5 w-5" />} />
+              <div className="space-y-6">
+                <div className="flex items-start gap-5">
+                  <InfoIcon icon={<Phone className="h-6 w-6" />} />
                   <div>
-                    <h3 className="mb-1 text-xs font-bold uppercase tracking-wide text-muted-foreground">Call Us</h3>
+                    <h3 className="mb-1.5 text-[10px] font-black uppercase tracking-widest text-text-sub">Call Us</h3>
                     {siteConfig.phoneNumbers.map((number) => (
                       <a
                         key={number}
                         href={`tel:${number.replace(/\s+/g, '')}`}
-                        className="block text-sm font-semibold text-slate-700 transition hover:text-primary-600 dark:text-slate-300"
+                        className="block text-base font-black text-foreground transition hover:text-primary-600"
                       >
                         {number}
                       </a>
@@ -66,40 +66,40 @@ export const Contact: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <InfoIcon icon={<Mail className="h-5 w-5" />} />
+                <div className="flex items-start gap-5">
+                  <InfoIcon icon={<Mail className="h-6 w-6" />} />
                   <div>
-                    <h3 className="mb-1 text-xs font-bold uppercase tracking-wide text-muted-foreground">Email Inquiries</h3>
+                    <h3 className="mb-1.5 text-[10px] font-black uppercase tracking-widest text-text-sub">Email Inquiries</h3>
                     <a
                       href={`mailto:${siteConfig.supportEmail}`}
-                      className="block text-sm font-semibold text-slate-700 transition hover:text-primary-600 dark:text-slate-300"
+                      className="block text-base font-black text-foreground transition hover:text-primary-600"
                     >
                       Support: {siteConfig.supportEmail}
                     </a>
                     <a
                       href={`mailto:${siteConfig.salesEmail}`}
-                      className="block text-sm font-semibold text-slate-700 transition hover:text-primary-600 dark:text-slate-300"
+                      className="block text-base font-black text-foreground transition hover:text-primary-600"
                     >
                       Sales: {siteConfig.salesEmail}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <InfoIcon icon={<MapPin className="h-5 w-5" />} />
+                <div className="flex items-start gap-5">
+                  <InfoIcon icon={<MapPin className="h-6 w-6" />} />
                   <div>
-                    <h3 className="mb-1 text-xs font-bold uppercase tracking-wide text-muted-foreground">Office Location</h3>
-                    <p className="text-sm font-semibold leading-relaxed text-slate-700 dark:text-slate-300">
+                    <h3 className="mb-1.5 text-[10px] font-black uppercase tracking-widest text-text-sub">Office Location</h3>
+                    <p className="text-base font-black leading-relaxed text-foreground">
                       {siteConfig.address}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 border-t border-slate-100 pt-5 dark:border-slate-800">
-                  <InfoIcon icon={<Clock className="h-5 w-5" />} variant="indigo" />
+                <div className="flex items-start gap-5 border-t border-border pt-8 dark:border-slate-800">
+                  <InfoIcon icon={<Clock className="h-6 w-6" />} variant="indigo" />
                   <div>
-                    <h3 className="mb-1 text-xs font-bold uppercase tracking-wide text-muted-foreground">Business Hours</h3>
-                    <p className="text-xs font-medium leading-relaxed text-slate-700 dark:text-slate-300">
+                    <h3 className="mb-1.5 text-[10px] font-black uppercase tracking-widest text-text-sub">Business Hours</h3>
+                    <p className="text-sm font-bold leading-relaxed text-foreground">
                       {siteConfig.businessHours.weekdays}
                       <br />
                       {siteConfig.businessHours.saturday}
@@ -111,18 +111,18 @@ export const Contact: React.FC = () => {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-lg dark:border-slate-800 dark:bg-slate-900">
-              <h2 className="font-heading text-lg font-extrabold text-foreground">Common Questions</h2>
-              <div className="mt-4 space-y-4">
+            <div className="rounded-[40px] border border-border bg-surface p-8 shadow-2xl shadow-foreground/5 dark:border-slate-800 dark:bg-slate-900 sm:p-10">
+              <h2 className="font-heading text-2xl font-black text-foreground tracking-tight">Common Questions</h2>
+              <div className="mt-6 space-y-4">
                 {siteConfig.faqs.slice(0, 3).map((faq) => (
                   <details
                     key={faq.question}
-                    className="group rounded-2xl border border-slate-100 p-4 dark:border-slate-800"
+                    className="group rounded-[24px] border border-border bg-muted/50 p-5 transition-all duration-300 hover:border-primary-400"
                   >
-                    <summary className="cursor-pointer text-sm font-bold text-slate-800 dark:text-white">
+                    <summary className="cursor-pointer text-sm font-black text-foreground">
                       {faq.question}
                     </summary>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{faq.answer}</p>
+                    <p className="mt-4 text-sm leading-relaxed text-text-sub font-medium">{faq.answer}</p>
                   </details>
                 ))}
               </div>
@@ -130,18 +130,18 @@ export const Contact: React.FC = () => {
           </aside>
 
           <section className="lg:col-span-7">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-lg dark:border-slate-800 dark:bg-slate-900 sm:p-8">
+            <div className="rounded-[40px] border border-border bg-surface p-8 shadow-2xl shadow-foreground/5 dark:border-slate-800 dark:bg-slate-900 sm:p-10">
               <ContactForm />
             </div>
           </section>
         </div>
 
-        <section className="space-y-4">
-          <h2 className="font-heading text-lg font-extrabold text-foreground">Find Our Tech Hub</h2>
-          <div className="relative z-10 h-96 overflow-hidden rounded-[32px] border border-slate-200 shadow-xl dark:border-slate-800">
+        <section className="space-y-8">
+          <h2 className="font-heading text-2xl font-black text-foreground tracking-tight">Find Our Tech Hub</h2>
+          <div className="relative z-10 h-[500px] overflow-hidden rounded-[48px] border border-border shadow-2xl shadow-foreground/5">
             <iframe
               src={siteConfig.googleMapsEmbedUrl}
-              className="h-full w-full border-0"
+              className="h-full w-full border-0 grayscale hover:grayscale-0 transition-all duration-700"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

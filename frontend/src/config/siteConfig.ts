@@ -1,4 +1,5 @@
 import type { TeamMember } from '../types/team';
+import type { PricingPlan } from '../types/pricing';
 
 export interface ServiceItem {
   id: string;
@@ -78,6 +79,7 @@ export interface SiteConfig {
   stats: StatItem[];
   trustIndicators: TrustIndicator[];
   teamMembers: TeamMember[];
+  pricingPlans: PricingPlan[];
   seoDefaults: {
     titleTemplate: string;
     defaultTitle: string;
@@ -409,6 +411,93 @@ export const siteConfig: SiteConfig = {
       bio: "Leading product engineering, scalable software architecture, and secure cloud delivery for the OOMS platform.",
       linkedin: "",
       email: ""
+    }
+  ],
+  pricingPlans: [
+    {
+      id: "silver",
+      name: "Silver",
+      price: 999,
+      currency: "₹",
+      duration: "month",
+      durationLabel: "1 Month",
+      description: "Ideal for individual practitioners starting their digital journey.",
+      features: [
+        { text: "Unlimited User Creation", included: true },
+        { text: "Unlimited Branch Creation", included: true },
+        { text: "Client Management CRM", included: true },
+        { text: "Task & Workflow Automation", included: true },
+        { text: "Staff Attendance", included: true },
+        { text: "Finance & Invoicing", included: true },
+        { text: "WhatsApp Broadcast", included: true },
+        { text: "Cloud Document Vault", included: true }
+      ],
+      ctaText: "Start 1 Month Plan",
+      ctaLink: "/contact?plan=silver"
+    },
+    {
+      id: "gold",
+      name: "Gold",
+      price: 2799,
+      currency: "₹",
+      duration: "3-months",
+      durationLabel: "3 Months",
+      description: "Best for small firms looking to stabilize their digital workflows.",
+      features: [
+        { text: "Unlimited User Creation", included: true },
+        { text: "Unlimited Branch Creation", included: true },
+        { text: "Client Management CRM", included: true },
+        { text: "Task & Workflow Automation", included: true },
+        { text: "Staff Attendance", included: true },
+        { text: "Finance & Invoicing", included: true },
+        { text: "WhatsApp Broadcast", included: true },
+        { text: "Cloud Document Vault", included: true }
+      ],
+      ctaText: "Start 3 Month Plan",
+      ctaLink: "/contact?plan=gold"
+    },
+    {
+      id: "platinum",
+      name: "Platinum",
+      price: 5399,
+      currency: "₹",
+      duration: "6-months",
+      durationLabel: "6 Months",
+      description: "The professional choice for growing firms with multiple departments.",
+      isPopular: true,
+      features: [
+        { text: "Unlimited User Creation", included: true },
+        { text: "Unlimited Branch Creation", included: true },
+        { text: "Client Management CRM", included: true },
+        { text: "Task & Workflow Automation", included: true },
+        { text: "Staff Attendance", included: true },
+        { text: "Finance & Invoicing", included: true },
+        { text: "WhatsApp Broadcast", included: true },
+        { text: "Cloud Document Vault", included: true }
+      ],
+      ctaText: "Start 6 Month Plan",
+      ctaLink: "/contact?plan=platinum"
+    },
+    {
+      id: "diamond",
+      name: "Diamond",
+      price: 9999,
+      currency: "₹",
+      duration: "year",
+      durationLabel: "12 Months",
+      description: "Maximum value for large enterprise firms seeking total office automation.",
+      features: [
+        { text: "Unlimited User Creation", included: true },
+        { text: "Unlimited Branch Creation", included: true },
+        { text: "Client Management CRM", included: true },
+        { text: "Task & Workflow Automation", included: true },
+        { text: "Staff Attendance", included: true },
+        { text: "Finance & Invoicing", included: true },
+        { text: "WhatsApp Broadcast", included: true },
+        { text: "Cloud Document Vault", included: true }
+      ],
+      ctaText: "Start 12 Month Plan",
+      ctaLink: "/contact?plan=diamond"
     }
   ],
   seoDefaults: {

@@ -10,6 +10,8 @@ const About = lazy(() => import('./pages/About'));
 const Services = lazy(() => import('./pages/Services'));
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 const Industries = lazy(() => import('./pages/Industries'));
+const Pricing = lazy(() => import('./pages/Pricing'));
+const BusinessPolicy = lazy(() => import('./pages/BusinessPolicy'));
 const Contact = lazy(() => import('./pages/Contact'));
 const ThankYou = lazy(() => import('./pages/ThankYou'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -25,6 +27,8 @@ export const App: React.FC = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/services/:slug" element={<ServiceDetail />} />
             <Route path="/industries" element={<Industries />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/business-policy" element={<BusinessPolicy />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/thank-you" element={<ThankYou />} />
             <Route path="*" element={<NotFound />} />

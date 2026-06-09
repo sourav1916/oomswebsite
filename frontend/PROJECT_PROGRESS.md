@@ -36,6 +36,27 @@
 - Fixed Lighthouse SEO audits to ensure a score of 100 by adding default title, meta description, robots directive, and canonical link tags to `index.html`, and providing descriptive `aria-label` attributes for services list "Learn more" links in `Home.tsx`.
 - Pruned unused placeholder boilerplate directories (`constants`, `contexts`, `data`, `features`, `routes`, `seo`, and `utils`) under `frontend/src/` to keep the codebase clean.
 - Fixed TypeScript compilation issue for Framer Motion animation variants in `Home.tsx` and `TeamSection.tsx` by explicitly typing variant objects as `Variants`.
+- Added `src/types/pricing.ts` for pricing plan and feature typing.
+- Added comprehensive pricing plans (Silver, Gold, Platinum, Diamond) with detailed features, pricing, and durations to `src/config/siteConfig.ts` based on `https://ooms.in/index#pricing`.
+- Implemented dedicated `src/pages/Pricing.tsx` page with an optimized hero section and reusable pricing grid.
+- Wired the Pricing page into the application routing in `App.tsx` and updated the `Navbar.tsx` to include a standard link to `/pricing`.
+- Removed pricing section from `Home.tsx` to maintain a cleaner home page layout as requested.
+- Implemented a modernized `src/pages/BusinessPolicy.tsx` with:
+  - Sticky sidebar navigation and Scroll-Spy for effortless section hopping.
+  - Professional color-coded policy categories and high-contrast typography.
+  - Modern hero section with carbon-fibre texture and glassmorphism accents.
+  - Categorized policy grids and a dedicated "Compliance Status" dashboard.
+- Wired `/business-policy` route into `App.tsx` and added links to it (and Pricing) in both the `Navbar.tsx` and `Footer.tsx`.
+- Completed a comprehensive UI/UX visual audit and polish:
+  - Refined global light/dark theme variables in `index.css` for better contrast, depth, and a more premium aesthetic; stabilized light mode with a cleaner, high-contrast professional palette.
+  - Standardized interactive hover effects (`-translate-y-1`, scale, and shadow transitions) across all cards, buttons, and navigation links, including a professional interactive polish for the "Business Policy" page.
+  - Enhanced icon animations with `group-hover` scale and rotation effects in `Home`, `Services`, `Industries`, and `About` pages.
+  - Fixed visibility issues for the `ThemeToggle` and mobile menu icons in light mode.
+  - Improved brand identity with high-contrast, bold "OOMS" logo typography and refined tracking.
+  - Modernized the Pricing grid and Industry tabs with more distinct active and hover states.
+- Re-verified build checks (`npm run build`) pass cleanly after the UI/UX overhaul.
+- Re-verified build checks (`npm run build`) pass cleanly after adding Business Policy and Pricing pages.
+- Re-verified build checks (`npm run build`) pass cleanly after adding pricing features.
 - Re-verified build checks (`npm run build`) and lint checks (`npm run lint`) pass cleanly.
 
 ## In Progress

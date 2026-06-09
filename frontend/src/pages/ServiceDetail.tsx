@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Check, CheckCircle2, ShieldCheck, HelpCircle } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, ShieldCheck, HelpCircle } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 import { SEO } from '../components/SEO';
 import { LucideIcon } from '../components/LucideIcon';
@@ -53,45 +53,45 @@ export const ServiceDetail: React.FC = () => {
         ]}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Back Link */}
         <Link
           to="/services"
-          className="inline-flex items-center space-x-1.5 text-xs font-bold text-muted-foreground hover:text-primary-600 transition-colors mb-8"
+          className="inline-flex items-center space-x-2 text-xs font-black text-text-sub hover:text-primary-600 transition-colors mb-10 uppercase tracking-widest"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to all modules</span>
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           
           {/* Main Service Details Content */}
-          <div className="lg:col-span-8 space-y-10 group">
-            <div className="space-y-6">
-              <div className="w-12 h-12 rounded-2xl bg-primary-50 dark:bg-primary-950/45 text-primary-600 dark:text-primary-400 flex items-center justify-center shadow-sm transition-colors duration-300 group-hover:bg-primary-600 group-hover:text-white">
-                <LucideIcon name={service.iconName} className="w-6 h-6" />
+          <div className="lg:col-span-8 space-y-12 group">
+            <div className="space-y-8">
+              <div className="w-16 h-16 rounded-2xl bg-primary-100 dark:bg-primary-950/45 text-primary-700 dark:text-primary-400 flex items-center justify-center shadow-lg transition-all duration-500 group-hover:bg-primary-600 group-hover:text-white border border-primary-200/50">
+                <LucideIcon name={service.iconName} className="w-8 h-8" />
               </div>
-              <h1 className="font-heading font-extrabold text-3xl sm:text-4xl text-foreground leading-tight">
+              <h1 className="font-heading font-black text-4xl sm:text-5xl text-foreground leading-[0.95] tracking-tighter">
                 {service.title}
               </h1>
-              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+              <p className="text-text-sub text-lg sm:text-xl leading-relaxed font-medium">
                 {service.longDesc}
               </p>
             </div>
 
             {/* Service Features checklist */}
-            <div className="space-y-4">
-              <h3 className="font-heading font-extrabold text-lg text-foreground">
+            <div className="space-y-6">
+              <h3 className="font-heading font-black text-2xl text-foreground tracking-tight">
                 Key Features Included
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {service.features.map((feat, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-2xl border border-border bg-surface flex items-start space-x-3 hover:border-primary-500/20 transition-all duration-300"
+                    className="p-6 rounded-[32px] border border-border bg-surface flex items-start space-x-4 shadow-xl shadow-foreground/5 hover:border-primary-500/30 transition-all duration-500 hover:-translate-y-1"
                   >
-                    <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-                    <span className="text-slate-700 dark:text-slate-300 text-xs sm:text-sm font-semibold leading-relaxed">
+                    <CheckCircle2 className="w-6 h-6 text-success shrink-0 mt-0.5" />
+                    <span className="text-foreground text-sm sm:text-base font-black leading-relaxed">
                       {feat}
                     </span>
                   </div>
@@ -100,15 +100,15 @@ export const ServiceDetail: React.FC = () => {
             </div>
 
             {/* Service Benefits grid */}
-            <div className="space-y-4 pt-4">
-              <h3 className="font-heading font-extrabold text-lg text-foreground">
+            <div className="space-y-6 pt-6">
+              <h3 className="font-heading font-black text-2xl text-foreground tracking-tight">
                 Expected Business Outcomes
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {service.benefits.map((benefit, idx) => (
-                  <div key={idx} className="flex items-start space-x-3 text-muted-foreground text-xs sm:text-sm leading-relaxed">
-                    <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary-600 shrink-0" />
-                    <span className="font-semibold">{benefit}</span>
+                  <div key={idx} className="flex items-start space-x-4 text-text-sub text-base sm:text-lg leading-relaxed font-medium">
+                    <div className="mt-2.5 w-2 h-2 rounded-full bg-primary-600 shrink-0 shadow-lg shadow-primary-600/20" />
+                    <span>{benefit}</span>
                   </div>
                 ))}
               </div>
@@ -117,68 +117,68 @@ export const ServiceDetail: React.FC = () => {
 
           {/* Sidebar Inquiry Capture */}
           <div className="lg:col-span-4 sticky top-24">
-            <div className="p-6 bg-surface border border-border rounded-3xl shadow-xl space-y-6">
-              <div className="space-y-2 text-center pb-4 border-b border-border">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-primary-500 dark:text-primary-400">
+            <div className="p-8 bg-surface border border-border rounded-[40px] shadow-2xl shadow-foreground/5 space-y-8">
+              <div className="space-y-3 text-center pb-6 border-b border-border">
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
                   Firm Onboarding
                 </span>
-                <h3 className="font-heading font-bold text-base text-foreground">
+                <h3 className="font-heading font-black text-xl text-foreground tracking-tight leading-tight">
                   Schedule Demo For This Module
                 </h3>
               </div>
 
               {submitted ? (
-                <div className="p-6 text-center space-y-4 bg-emerald-500/5 border border-emerald-500/10 rounded-2xl">
-                  <ShieldCheck className="w-12 h-12 text-emerald-500 mx-auto" />
-                  <h4 className="font-heading font-bold text-sm text-foreground">Request Received</h4>
-                  <p className="text-muted-foreground text-xs leading-relaxed">
+                <div className="p-8 text-center space-y-5 bg-success/5 border border-success/10 rounded-[32px]">
+                  <ShieldCheck className="w-16 h-16 text-success mx-auto" />
+                  <h4 className="font-heading font-black text-lg text-foreground">Request Received</h4>
+                  <p className="text-text-sub text-sm leading-relaxed font-medium">
                     We will email your firm at the provided address to configure your Sandbox credentials.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleInquiry} className="space-y-4">
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-600 uppercase tracking-wide">Your Name</label>
+                <form onSubmit={handleInquiry} className="space-y-5">
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black text-text-sub uppercase tracking-widest ml-1">Your Name</label>
                     <input
                       type="text"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-slate-50 dark:bg-slate-950/60 rounded-xl px-3.5 py-2.5 text-xs text-foreground border border-border focus:outline-none focus:border-primary-500"
+                      className="w-full bg-muted/50 dark:bg-slate-950/60 rounded-2xl px-4 py-3 text-sm text-foreground border border-border focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                     />
                   </div>
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-600 uppercase tracking-wide">Work Email</label>
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black text-text-sub uppercase tracking-widest ml-1">Work Email</label>
                     <input
                       type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-slate-50 dark:bg-slate-950/60 rounded-xl px-3.5 py-2.5 text-xs text-foreground border border-border focus:outline-none focus:border-primary-500"
+                      className="w-full bg-muted/50 dark:bg-slate-950/60 rounded-2xl px-4 py-3 text-sm text-foreground border border-border focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                     />
                   </div>
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-600 uppercase tracking-wide">Phone Number</label>
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black text-text-sub uppercase tracking-widest ml-1">Phone Number</label>
                     <input
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-slate-50 dark:bg-slate-950/60 rounded-xl px-3.5 py-2.5 text-xs text-foreground border border-border focus:outline-none focus:border-primary-500"
+                      className="w-full bg-muted/50 dark:bg-slate-950/60 rounded-2xl px-4 py-3 text-sm text-foreground border border-border focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                     />
                   </div>
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-slate-600 uppercase tracking-wide">Practice/Firm Name</label>
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-black text-text-sub uppercase tracking-widest ml-1">Practice/Firm Name</label>
                     <input
                       type="text"
                       value={formData.firm}
                       onChange={(e) => setFormData({ ...formData, firm: e.target.value })}
-                      className="w-full bg-slate-50 dark:bg-slate-950/60 rounded-xl px-3.5 py-2.5 text-xs text-foreground border border-border focus:outline-none focus:border-primary-500"
+                      className="w-full bg-muted/50 dark:bg-slate-950/60 rounded-2xl px-4 py-3 text-sm text-foreground border border-border focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-heading font-bold text-xs uppercase tracking-wider transition-colors shadow-lg shadow-primary-500/10 cursor-pointer"
+                    className="w-full py-4.5 rounded-2xl bg-primary-600 hover:bg-primary-700 text-white font-heading font-black text-xs uppercase tracking-widest transition-all shadow-xl shadow-primary-600/25 cursor-pointer active:scale-95 hover:-translate-y-0.5"
                   >
                     Send Request
                   </button>

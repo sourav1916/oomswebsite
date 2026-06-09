@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { FloatingWhatsApp } from '../components/FloatingWhatsApp';
-import { ScrollToTop } from '../components/ScrollToTop';
 import { ScrollProgress } from '../components/ScrollProgress';
 import { BackToTopButton } from '../components/BackToTopButton';
 import { LiveChatWidget } from '../components/LiveChatWidget';
@@ -21,7 +20,6 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       
       {/* Dynamic route-triggered scroll manager & Back-To-Top button */}
       <ScrollProgress />
-      <ScrollToTop />
       
       {/* Sticky Top Header */}
       <Navbar />
