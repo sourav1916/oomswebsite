@@ -1,11 +1,10 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
 import { ScrollProgress } from "../components/ScrollProgress";
 import { BackToTopButton } from "../components/BackToTopButton";
-import { LiveChatWidget } from "../components/LiveChatWidget";
+import { TawkChat } from "../components/TawkChat";
 
 export const MainLayout = ({ children }) => {
   return (
@@ -32,7 +31,7 @@ export const MainLayout = ({ children }) => {
       </main>
 
       {/* Floating WhatsApp chat widget */}
-      <LiveChatWidget />
+      <TawkChat />
       <BackToTopButton />
       <FloatingWhatsApp />
 

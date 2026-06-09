@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -8,7 +7,7 @@ import {
   Mail,
   Settings,
 } from "lucide-react";
-import { SEO } from "../components/SEO";
+import { SEO } from "@/components/SEO";
 import { siteConfig } from "../config/siteConfig";
 import { LucideIcon } from "../components/LucideIcon";
 

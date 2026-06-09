@@ -1,7 +1,6 @@
-import React from "react";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "../components/ContactForm";
-import { SEO } from "../components/SEO";
+import { SEO } from "@/components/SEO";
 import { siteConfig } from "../config/siteConfig";
 
 export const Contact = () => {

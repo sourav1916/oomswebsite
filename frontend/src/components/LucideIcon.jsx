@@ -1,4 +1,3 @@
-import React from "react";
 import * as Icons from "lucide-react";
 
 export const LucideIcon = ({ name, className = "", size }) => {

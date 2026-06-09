@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -12,7 +12,7 @@ import {
   Star,
 } from "lucide-react";
 import { siteConfig } from "../config/siteConfig";
-import { SEO } from "../components/SEO";
+import { SEO } from "@/components/SEO";
 import { LucideIcon } from "../components/LucideIcon";
 import { AnimatedCounter } from "../components/AnimatedCounter";
 

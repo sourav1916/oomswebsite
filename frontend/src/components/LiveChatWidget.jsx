@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MessageCircle, Send, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { chatSocketService } from "../services/chatSocketService";

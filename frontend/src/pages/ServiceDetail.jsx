@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, CheckCircle2, ShieldCheck, HelpCircle } from "lucide-react";
 import { siteConfig } from "../config/siteConfig";
-import { SEO } from "../components/SEO";
+import { SEO } from "@/components/SEO";
 import { LucideIcon } from "../components/LucideIcon";
 
 export const ServiceDetail = () => {

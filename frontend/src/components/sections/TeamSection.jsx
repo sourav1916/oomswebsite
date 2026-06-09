@@ -1,4 +1,3 @@
-import React from "react";
 import { Linkedin, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { siteConfig } from "../../config/siteConfig";

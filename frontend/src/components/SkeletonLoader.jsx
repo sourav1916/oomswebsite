@@ -1,4 +1,3 @@
-import React from "react";
 
 export const SkeletonLoader = ({ type = "card" }) => {
   if (type === "card") {

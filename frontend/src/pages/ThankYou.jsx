@@ -1,7 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { SEO } from "../components/SEO";
+import { SEO } from "@/components/SEO";
 
 export const ThankYou = () => (
   <>

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   ShieldAlert,
   ShieldCheck,
@@ -10,7 +9,7 @@ import {
   Server,
   RefreshCw,
 } from "lucide-react";
-import { SEO } from "../components/SEO";
+import { SEO } from "@/components/SEO";
 import { TeamSection } from "../components/sections/TeamSection";
 
 export const About = () => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, cloneElement } from "react";
 import { motion } from "framer-motion";
 import {
   ShieldCheck,
@@ -14,79 +14,79 @@ import {
   ArrowRight,
   ExternalLink,
 } from "lucide-react";
-import { SEO } from "../components/SEO";
+import { SEO } from "@/components/SEO";
+
+const sections = [
+  {
+    id: "overview",
+    title: "Company Overview",
+    icon: <Globe className="w-5 h-5" />,
+    color: "text-blue-600 bg-blue-50 dark:bg-blue-950/30",
+    content:
+      "OneSaaS Technologies Private Limited is a technology company focused on developing web-based CRM and office management software. Our flagship product, OneSaaS Office Management System (OOMS), is designed for Chartered Accountants, Cost Accountants, Company Secretaries, Advocates, and professional service providers to manage their staff, clients, tasks, and finances seamlessly through a centralized platform.",
+  },
+  {
+    id: "products",
+    title: "Product and Services",
+    icon: <BookOpen className="w-5 h-5" />,
+    color: "text-indigo-600 bg-indigo-50 dark:bg-indigo-950/30",
+    content: [
+      "Subscription-based access to our OOMS web application.",
+      "Custom software development for professionals.",
+      "Technical support and software updates.",
+      "Optional integration services (e.g., payment gateways, APIs, document signing tools).",
+    ],
+  },
+  {
+    id: "pricing",
+    title: "Pricing & Payment",
+    icon: <RefreshCcw className="w-5 h-5" />,
+    color: "text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30",
+    content: [
+      "Services are offered on a subscription basis (monthly/quarterly/annually).",
+      "Payments are accepted online through integrated payment gateways.",
+      "Invoices and payment receipts are automatically generated via the platform.",
+      "Pricing plans are available on our website and are subject to change with prior notice.",
+    ],
+  },
+  {
+    id: "refunds",
+    title: "Refund & Cancellation",
+    icon: <Scale className="w-5 h-5" />,
+    color: "text-amber-600 bg-amber-50 dark:bg-amber-950/30",
+    content: [
+      "Subscriptions may be cancelled anytime before the renewal date.",
+      "Refunds will be processed only if cancellation is made within 7 days of the initial payment for first-time subscriptions.",
+      "No refunds will be provided for renewals or on services already consumed.",
+      "Any technical dispute must be raised within 48 hours of service disruption for refund eligibility.",
+    ],
+  },
+  {
+    id: "privacy",
+    title: "Privacy Policy",
+    icon: <Lock className="w-5 h-5" />,
+    color: "text-rose-600 bg-rose-50 dark:bg-rose-950/30",
+    content: [
+      "We collect user data such as name, contact details, billing info, and business profile for account creation and platform usage.",
+      "Customer data remains confidential and is not shared with any third-party except as required to provide services (e.g., payment processors, legal compliance).",
+      "All data is stored securely in encrypted form and processed in accordance with the IT Act and applicable data protection laws in India.",
+    ],
+  },
+  {
+    id: "terms",
+    title: "Terms of Use",
+    icon: <ShieldCheck className="w-5 h-5" />,
+    color: "text-purple-600 bg-purple-50 dark:bg-purple-950/30",
+    content: [
+      "The OOMS platform is licensed to subscribers for professional use only.",
+      "Unauthorized reselling, reverse engineering, or hacking attempts will result in account termination and legal action.",
+      "Users are responsible for the activities under their account and must maintain the confidentiality of their login credentials.",
+    ],
+  },
+];
 
 const BusinessPolicy = () => {
   const [activeSection, setActiveSection] = useState("overview");
-
-  const sections = [
-    {
-      id: "overview",
-      title: "Company Overview",
-      icon: <Globe className="w-5 h-5" />,
-      color: "text-blue-600 bg-blue-50 dark:bg-blue-950/30",
-      content:
-        "OneSaaS Technologies Private Limited is a technology company focused on developing web-based CRM and office management software. Our flagship product, OneSaaS Office Management System (OOMS), is designed for Chartered Accountants, Cost Accountants, Company Secretaries, Advocates, and professional service providers to manage their staff, clients, tasks, and finances seamlessly through a centralized platform.",
-    },
-    {
-      id: "products",
-      title: "Product and Services",
-      icon: <BookOpen className="w-5 h-5" />,
-      color: "text-indigo-600 bg-indigo-50 dark:bg-indigo-950/30",
-      content: [
-        "Subscription-based access to our OOMS web application.",
-        "Custom software development for professionals.",
-        "Technical support and software updates.",
-        "Optional integration services (e.g., payment gateways, APIs, document signing tools).",
-      ],
-    },
-    {
-      id: "pricing",
-      title: "Pricing & Payment",
-      icon: <RefreshCcw className="w-5 h-5" />,
-      color: "text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30",
-      content: [
-        "Services are offered on a subscription basis (monthly/quarterly/annually).",
-        "Payments are accepted online through integrated payment gateways.",
-        "Invoices and payment receipts are automatically generated via the platform.",
-        "Pricing plans are available on our website and are subject to change with prior notice.",
-      ],
-    },
-    {
-      id: "refunds",
-      title: "Refund & Cancellation",
-      icon: <Scale className="w-5 h-5" />,
-      color: "text-amber-600 bg-amber-50 dark:bg-amber-950/30",
-      content: [
-        "Subscriptions may be cancelled anytime before the renewal date.",
-        "Refunds will be processed only if cancellation is made within 7 days of the initial payment for first-time subscriptions.",
-        "No refunds will be provided for renewals or on services already consumed.",
-        "Any technical dispute must be raised within 48 hours of service disruption for refund eligibility.",
-      ],
-    },
-    {
-      id: "privacy",
-      title: "Privacy Policy",
-      icon: <Lock className="w-5 h-5" />,
-      color: "text-rose-600 bg-rose-50 dark:bg-rose-950/30",
-      content: [
-        "We collect user data such as name, contact details, billing info, and business profile for account creation and platform usage.",
-        "Customer data remains confidential and is not shared with any third-party except as required to provide services (e.g., payment processors, legal compliance).",
-        "All data is stored securely in encrypted form and processed in accordance with the IT Act and applicable data protection laws in India.",
-      ],
-    },
-    {
-      id: "terms",
-      title: "Terms of Use",
-      icon: <ShieldCheck className="w-5 h-5" />,
-      color: "text-purple-600 bg-purple-50 dark:bg-purple-950/30",
-      content: [
-        "The OOMS platform is licensed to subscribers for professional use only.",
-        "Unauthorized reselling, reverse engineering, or hacking attempts will result in account termination and legal action.",
-        "Users are responsible for the activities under their account and must maintain the confidentiality of their login credentials.",
-      ],
-    },
-  ];
 
   // Scroll spy implementation
   useEffect(() => {
@@ -97,18 +97,17 @@ const BusinessPolicy = () => {
         if (element) {
           const offsetTop = element.offsetTop;
           const height = element.offsetHeight;
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + height
-          ) {
-            setActiveSection(section.id);
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + height) {
+            setActiveSection((prev) =>
+              prev === section.id ? prev : section.id
+            );
           }
         }
       }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [sections]);
+  }, []);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -169,17 +168,16 @@ const BusinessPolicy = () => {
                     <button
                       key={s.id}
                       onClick={() => scrollToSection(s.id)}
-                      className={`w-full flex items-center justify-between px-5 py-3.5 rounded-2xl text-sm font-black transition-all duration-500 group ${
-                        activeSection === s.id
-                          ? "bg-primary-600 text-white shadow-xl shadow-primary-600/25"
-                          : "text-text-sub hover:text-foreground hover:bg-muted"
-                      }`}
+                      className={`w-full flex items-center justify-between px-5 py-3.5 rounded-2xl text-sm font-black transition-all duration-500 group ${activeSection === s.id
+                        ? "bg-primary-600 text-white shadow-xl shadow-primary-600/25"
+                        : "text-text-sub hover:text-foreground hover:bg-muted"
+                        }`}
                     >
                       <div className="flex items-center space-x-4">
                         <div
                           className={`p-1.5 rounded-lg transition-colors ${activeSection === s.id ? "bg-white/20" : "bg-muted dark:bg-slate-800 group-hover:bg-border"}`}
                         >
-                          {React.cloneElement(s.icon, { className: "w-4 h-4" })}
+                          {cloneElement(s.icon, { className: "w-4 h-4" })}
                         </div>
                         <span>{s.title}</span>
                       </div>
@@ -227,7 +225,7 @@ const BusinessPolicy = () => {
                   <div
                     className={`p-4 rounded-2xl ${section.color} border border-current/10 shadow-lg`}
                   >
-                    {React.cloneElement(section.icon, { className: "w-6 h-6" })}
+                    {cloneElement(section.icon, { className: "w-6 h-6" })}
                   </div>
                   <h2 className="text-3xl sm:text-4xl font-heading font-black text-foreground tracking-tighter">
                     {section.title}
@@ -238,7 +236,7 @@ const BusinessPolicy = () => {
                   <div
                     className={`absolute top-0 right-0 w-48 h-48 opacity-[0.04] transition-transform duration-1000 group-hover:scale-125 group-hover:rotate-12 ${section.color.split(" ")[0]}`}
                   >
-                    {React.cloneElement(section.icon, {
+                    {cloneElement(section.icon, {
                       className: "w-full h-full",
                     })}
                   </div>

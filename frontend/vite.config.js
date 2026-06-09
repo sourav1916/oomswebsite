@@ -8,6 +8,11 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  resolve: {
+    alias: {
+      '@': '/src',
+    }
+  },
   build: {
     chunkSizeWarningLimit: 850,
     rollupOptions: {

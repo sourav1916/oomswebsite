@@ -1,4 +1,3 @@
-import React from "react";
 import { siteConfig } from "../config/siteConfig";
 
 export const FloatingWhatsApp = () => {
