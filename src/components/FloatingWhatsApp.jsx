@@ -1,8 +1,9 @@
-import { siteConfig } from "../config/siteConfig";
+import { useContactData } from "../hooks/useContactData";
 
 export const FloatingWhatsApp = () => {
-  const encodedText = encodeURIComponent(siteConfig.whatsappMessage);
-  const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodedText}`;
+  const contactData = useContactData();
+  const encodedText = encodeURIComponent(contactData.whatsappMessage);
+  const whatsappUrl = `https://wa.me/${contactData.whatsappNumber}?text=${encodedText}`;
 
   return (
     <div className="fixed bottom-6 right-6 z-40 flex items-center group">

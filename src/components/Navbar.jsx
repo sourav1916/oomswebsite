@@ -21,10 +21,7 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
+
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -46,11 +43,10 @@ export const Navbar = () => {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled
+        className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
             ? "bg-background/95 py-3 shadow-lg shadow-foreground/5 ring-1 ring-border backdrop-blur-xl dark:bg-slate-950/85 dark:shadow-slate-950/25 dark:ring-slate-800"
             : "bg-background/90 py-4 shadow-sm shadow-foreground/5 ring-1 ring-border/70 backdrop-blur-xl dark:bg-slate-950/75 dark:ring-slate-800/80"
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
@@ -74,11 +70,10 @@ export const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`relative px-4 py-2 rounded-xl font-heading text-sm font-bold tracking-wide transition-all duration-300 ${
-                  isActive(link.path)
+                className={`relative px-4 py-2 rounded-xl font-heading text-sm font-bold tracking-wide transition-all duration-300 ${isActive(link.path)
                     ? "text-primary-600 bg-primary-50/50 dark:bg-primary-950/30"
                     : "text-text-sub dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-surface-hover dark:hover:bg-slate-900/60"
-                }`}
+                  }`}
               >
                 {link.name}
                 {isActive(link.path) && (
@@ -151,11 +146,11 @@ export const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`px-4 py-3 rounded-xl font-heading text-base font-bold transition-all duration-200 ${
-                    isActive(link.path)
+                  onClick={() => setIsOpen(false)}
+                  className={`px-4 py-3 rounded-xl font-heading text-base font-bold transition-all duration-200 ${isActive(link.path)
                       ? "text-primary-800 dark:text-primary-300 bg-primary-100 dark:bg-primary-950/40"
                       : "text-foreground dark:text-slate-200 hover:text-primary-800 dark:hover:text-primary-300 hover:bg-surface-hover dark:hover:bg-slate-900/60"
-                  }`}
+                    }`}
                 >
                   {link.name}
                 </Link>

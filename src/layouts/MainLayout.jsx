@@ -5,6 +5,7 @@ import { FloatingWhatsApp } from "../components/FloatingWhatsApp";
 import { ScrollProgress } from "../components/ScrollProgress";
 import { BackToTopButton } from "../components/BackToTopButton";
 import { TawkChat } from "../components/TawkChat";
+import { ScrollToTop } from "../components/ScrollToTop";
 
 export const MainLayout = ({ children }) => {
   return (
@@ -14,6 +15,7 @@ export const MainLayout = ({ children }) => {
 
       {/* Dynamic route-triggered scroll manager & Back-To-Top button */}
       <ScrollProgress />
+      <ScrollToTop />
 
       {/* Sticky Top Header */}
       <Navbar />

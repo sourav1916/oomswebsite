@@ -8,10 +8,11 @@ import {
   Settings,
 } from "lucide-react";
 import { SEO } from "@/components/SEO";
-import { siteConfig } from "../config/siteConfig";
+import { useContactData } from "../hooks/useContactData";
 import { LucideIcon } from "../components/LucideIcon";
 
 export const Services = () => {
+  const contactData = useContactData();
   const integrations = [
     {
       title: "WhatsApp API Gateway",
@@ -60,7 +61,7 @@ export const Services = () => {
       {/* Services detailed catalog list */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {siteConfig.services.map((service) => (
+          {contactData.services.map((service) => (
             <div
               key={service.id}
               className="group p-8 sm:p-10 rounded-[32px] bg-surface border border-border shadow-xl shadow-foreground/5 flex flex-col justify-between transition-all duration-500 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2"

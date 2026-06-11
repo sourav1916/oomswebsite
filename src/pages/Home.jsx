@@ -11,13 +11,14 @@ import {
   Minus,
   Star,
 } from "lucide-react";
-import { siteConfig } from "../config/siteConfig";
+import { useContactData } from "../hooks/useContactData";
 import { SEO } from "@/components/SEO";
 import { LucideIcon } from "../components/LucideIcon";
 import { AnimatedCounter } from "../components/AnimatedCounter";
 
 export const Home = () => {
-  const [activeTab, setActiveTab] = useState(siteConfig.industries[0].id);
+  const contactData = useContactData();
+  const [activeTab, setActiveTab] = useState(contactData.industries[0].id);
   const [openFaq, setOpenFaq] = useState(null);
 
   const toggleFaq = (idx) => {
@@ -272,7 +273,7 @@ export const Home = () => {
       {/* Stats Counter Section */}
       <section className="py-16 bg-muted border-y border-border px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {siteConfig.stats.map((stat, idx) => (
+          {contactData.stats.map((stat, idx) => (
             <div key={idx} className="text-center">
               <span className="text-4xl sm:text-5xl font-black font-heading bg-gradient-to-r from-primary-600 to-indigo-600 bg-clip-text text-transparent block mb-2 tracking-tighter">
                 <AnimatedCounter
@@ -314,7 +315,7 @@ export const Home = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {siteConfig.services.map((service) => (
+            {contactData.services.map((service) => (
               <motion.div
                 key={service.id}
                 variants={itemVariants}
@@ -362,7 +363,7 @@ export const Home = () => {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 max-w-5xl mx-auto">
-            {siteConfig.industries.map((ind) => (
+            {contactData.industries.map((ind) => (
               <button
                 key={ind.id}
                 onClick={() => setActiveTab(ind.id)}
@@ -380,7 +381,7 @@ export const Home = () => {
           {/* Active Tab Panel with Motion animation */}
           <div className="max-w-5xl mx-auto">
             <AnimatePresence mode="wait">
-              {siteConfig.industries.map((ind) => {
+              {contactData.industries.map((ind) => {
                 if (ind.id !== activeTab) return null;
                 return (
                   <motion.div
@@ -520,7 +521,7 @@ export const Home = () => {
 
             {/* Right Indicators cards */}
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {siteConfig.trustIndicators.map((ind, i) => (
+              {contactData.trustIndicators.map((ind, i) => (
                 <div
                   key={i}
                   className="group p-8 bg-surface rounded-[32px] border border-border shadow-xl shadow-foreground/5 dark:border-slate-800 dark:shadow-slate-950/20 flex items-start space-x-5 transition-all duration-500 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-1"
@@ -561,7 +562,7 @@ export const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {siteConfig.testimonials.map((t) => (
+            {contactData.testimonials.map((t) => (
               <div
                 key={t.id}
                 className="p-8 sm:p-10 rounded-[40px] bg-surface border border-border flex flex-col justify-between relative overflow-hidden shadow-xl shadow-foreground/5 transition-all duration-500 hover:shadow-2xl hover:border-primary-400"
@@ -618,7 +619,7 @@ export const Home = () => {
 
           {/* Accordion container */}
           <div className="space-y-4">
-            {siteConfig.faqs.map((faq, idx) => {
+            {contactData.faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;
               return (
                 <div
@@ -682,7 +683,7 @@ export const Home = () => {
                 Schedule Demo
               </Link>
               <a
-                href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`}
+                href={`https://wa.me/${contactData.whatsappNumber}?text=${encodeURIComponent(contactData.whatsappMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center space-x-3 px-10 py-5 rounded-[20px] bg-slate-900/30 hover:bg-slate-900/50 border border-white/30 text-white font-heading font-black transition-all duration-300 hover:-translate-y-1 active:scale-95 text-lg"

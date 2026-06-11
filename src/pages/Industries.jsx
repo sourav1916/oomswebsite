@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { SEO } from "@/components/SEO";
-import { siteConfig } from "../config/siteConfig";
+import { useContactData } from "../hooks/useContactData";
 import { LucideIcon } from "../components/LucideIcon";
 
 export const Industries = () => {
+  const contactData = useContactData();
   return (
     <>
       <SEO
@@ -30,7 +31,7 @@ export const Industries = () => {
       {/* Industries Grid */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
         <div className="space-y-12">
-          {siteConfig.industries.map((ind, index) => {
+          {contactData.industries.map((ind, index) => {
             const isEven = index % 2 === 0;
             return (
               <div

@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { Check, ArrowRight, Zap, Star } from "lucide-react";
 import { Link } from "react-router-dom";
-import { siteConfig } from "../../config/siteConfig";
+import { useContactData } from "../../hooks/useContactData";
 
 export const PricingSection = () => {
+  const contactData = useContactData();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -72,7 +73,7 @@ export const PricingSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
         >
-          {siteConfig.pricingPlans.map((plan) => (
+          {contactData.pricingPlans.map((plan) => (
             <motion.div
               key={plan.id}
               variants={itemVariants}

@@ -1,6 +1,6 @@
 import { Linkedin, Mail } from "lucide-react";
 import { motion } from "framer-motion";
-import { siteConfig } from "../../config/siteConfig";
+import { useContactData } from "../../hooks/useContactData";
 
 const sectionVariants = {
   hidden: { opacity: 0 },
@@ -106,7 +106,8 @@ const TeamCard = ({ member }) => {
 };
 
 export const TeamSection = () => {
-  if (!siteConfig.teamMembers.length) return null;
+  const contactData = useContactData();
+  if (!contactData.teamMembers.length) return null;
 
   return (
     <section
@@ -143,7 +144,7 @@ export const TeamSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {siteConfig.teamMembers.map((member) => (
+          {contactData.teamMembers.map((member) => (
             <TeamCard key={member.id} member={member} />
           ))}
         </motion.div>

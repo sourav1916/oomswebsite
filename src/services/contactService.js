@@ -13,6 +13,11 @@ export const submitContactInquiry = async (payload) => {
     };
   }
 
-  const { data } = await httpClient.post("/contact", payload);
+  const { data } = await httpClient.post("/contact-us", payload);
   return data;
+};
+
+export const getContactDetails = async () => {
+  const { data } = await httpClient.get("/contact");
+  return data.data;
 };

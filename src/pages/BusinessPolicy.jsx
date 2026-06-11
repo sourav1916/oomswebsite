@@ -1,4 +1,5 @@
 import { useState, useEffect, cloneElement } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ShieldCheck,
@@ -352,20 +353,20 @@ const BusinessPolicy = () => {
               Ready to automate your practice under professional guidelines?
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="w-full sm:w-auto px-10 py-5 rounded-[20px] bg-primary-600 text-white font-heading font-black shadow-2xl shadow-primary-600/30 hover:bg-primary-700 hover:-translate-y-1 transition-all flex items-center justify-center space-x-3 text-lg"
               >
                 <span>Request Live Demo</span>
                 <ArrowRight className="w-6 h-6" />
-              </a>
-              <a
-                href="/pricing"
+              </Link>
+              <Link
+                to="/pricing"
                 className="w-full sm:w-auto px-10 py-5 rounded-[20px] bg-background/10 border border-background/20 !text-white font-heading font-black hover:bg-background/20 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-3 text-lg group"
               >
                 <span>View Pricing Plans</span>
                 <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

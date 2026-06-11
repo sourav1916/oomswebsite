@@ -4,9 +4,10 @@ import { useForm } from "react-hook-form";
 import { AlertCircle, Send, ShieldCheck } from "lucide-react";
 import { contactSchema } from "../schemas/contactSchema";
 import { submitContactInquiry } from "../services/contactService";
-import { siteConfig } from "../config/siteConfig";
+import { useContactData } from "../hooks/useContactData";
 
 export const ContactForm = () => {
+  const contactData = useContactData();
   const {
     register,
     handleSubmit,
@@ -16,7 +17,7 @@ export const ContactForm = () => {
     resolver: zodResolver(contactSchema),
     defaultValues: {
       serviceInterestedIn:
-        siteConfig.services[0]?.title ?? "Platform consultation",
+        contactData.services[0]?.title ?? "Platform consultation",
       website: "",
     },
   });
@@ -62,7 +63,7 @@ export const ContactForm = () => {
       />
 
       <h3 className="border-b border-border pb-3 font-heading text-lg font-extrabold text-foreground dark:border-slate-800 dark:text-white">
-        Submit Demo Request
+        Contact Us
       </h3>
 
       {mutation.isError && (
@@ -138,7 +139,7 @@ export const ContactForm = () => {
       <label className="block space-y-1.5">
         <span className={labelClass}>Service Interested In</span>
         <select className={fieldClass} {...register("serviceInterestedIn")}>
-          {siteConfig.services.map((service) => (
+          {contactData.services.map((service) => (
             <option key={service.id} value={service.title}>
               {service.title}
             </option>

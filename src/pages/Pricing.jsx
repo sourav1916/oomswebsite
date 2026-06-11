@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { PricingSection } from "../components/sections/PricingSection";
 
@@ -61,18 +62,18 @@ const Pricing = () => {
             the expertise to help you transition to the cloud safely.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="w-full sm:w-auto px-10 py-5 rounded-[20px] bg-primary-600 text-white font-heading font-black shadow-2xl shadow-primary-600/30 hover:bg-primary-700 transition-all hover:-translate-y-1 active:scale-95"
             >
               Contact Sales
-            </a>
-            <a
-              href="/#faq"
+            </Link>
+            <Link
+              to="/#faq"
               className="w-full sm:w-auto px-10 py-5 rounded-[20px] bg-background border border-border text-foreground font-heading font-black hover:bg-surface-hover transition-all hover:-translate-y-1 active:scale-95"
             >
               Read FAQs
-            </a>
+            </Link>
           </div>
         </div>
       </section>

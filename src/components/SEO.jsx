@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { useContactData } from "../hooks/useContactData";
 import { siteConfig } from "../config/siteConfig";
 
 export const SEO = ({
@@ -9,39 +10,40 @@ export const SEO = ({
   schema,
   breadcrumbs,
 }) => {
+  const contactData = useContactData();
   const metaTitle = title
-    ? `${title} | ${siteConfig.shortName}`
-    : siteConfig.seoDefaults.defaultTitle;
-  const metaDesc = description || siteConfig.seoDefaults.defaultDescription;
-  const currentUrl = canonicalUrl || siteConfig.websiteUrl;
+    ? `${title} | ${contactData.shortName}`
+    : contactData.seoDefaults.defaultTitle;
+  const metaDesc = description || contactData.seoDefaults.defaultDescription;
+  const currentUrl = canonicalUrl || contactData.websiteUrl;
 
   // JSON-LD Organization Schema
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": `${siteConfig.websiteUrl}/#organization`,
-    name: siteConfig.companyName,
-    url: siteConfig.websiteUrl,
-    logo: `${siteConfig.websiteUrl}/logo.png`,
+    "@id": `${contactData.websiteUrl}/#organization`,
+    name: contactData.companyName,
+    url: contactData.websiteUrl,
+    logo: `${contactData.websiteUrl}/logo.png`,
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: siteConfig.phoneNumbers[0],
+      telephone: contactData.phone[0]?.phone,
       contactType: "customer support",
-      email: siteConfig.supportEmail,
+      email: contactData.supportEmail,
       availableLanguage: ["en", "hi"],
     },
-    sameAs: Object.values(siteConfig.socialLinks).filter(Boolean),
+    sameAs: Object.values(contactData.socialLinks).filter(Boolean),
   };
 
   // JSON-LD Local Business Schema
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": `${siteConfig.websiteUrl}/#localbusiness`,
-    name: siteConfig.companyName,
-    image: `${siteConfig.websiteUrl}/logo.png`,
-    url: siteConfig.websiteUrl,
-    telephone: siteConfig.phoneNumbers[0],
+    "@id": `${contactData.websiteUrl}/#localbusiness`,
+    name: contactData.companyName,
+    image: `${contactData.websiteUrl}/logo.png`,
+    url: contactData.websiteUrl,
+    telephone: contactData.phone[0]?.phone,
     address: {
       "@type": "PostalAddress",
       streetAddress: "4th Floor, Innovation Wing, Koramangala Inner Ring Road",
@@ -83,7 +85,7 @@ export const SEO = ({
         name: crumb.name,
         item: crumb.item.startsWith("http")
           ? crumb.item
-          : `${siteConfig.websiteUrl}${crumb.item}`,
+          : `${contactData.websiteUrl}${crumb.item}`,
       })),
     };
   }
@@ -106,7 +108,7 @@ export const SEO = ({
       />
       <meta
         property="og:image"
-        content={`${siteConfig.websiteUrl}/og-image.jpg`}
+        content={`${contactData.websiteUrl}/og-image.jpg`}
       />
 
       {/* Twitter Cards */}
@@ -122,7 +124,7 @@ export const SEO = ({
       <meta name="twitter:description" content={metaDesc} />
       <meta
         name="twitter:image"
-        content={`${siteConfig.websiteUrl}/og-image.jpg`}
+        content={`${contactData.websiteUrl}/og-image.jpg`}
       />
 
       {/* JSON-LD Structured Data */}

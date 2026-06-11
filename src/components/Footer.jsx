@@ -12,12 +12,12 @@ import {
   Facebook,
   Youtube,
 } from "lucide-react";
-import { siteConfig } from "../config/siteConfig";
+import { useContactData } from "../hooks/useContactData";
 
 export const Footer = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
+  const contactData = useContactData();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email.trim()) {
@@ -59,7 +59,7 @@ export const Footer = () => {
             </p>
             {/* Socials */}
             <div className="flex items-center space-x-3">
-              {Object.entries(siteConfig.socialLinks).map(([platform, url]) => {
+              {Object.entries(contactData.socialLinks).map(([platform, url]) => {
                 const icon = socialIcons[platform];
                 if (!icon || !url) return null;
                 return (
@@ -112,7 +112,7 @@ export const Footer = () => {
               Core Modules
             </h3>
             <ul className="space-y-3.5">
-              {siteConfig.services.slice(0, 5).map((service) => (
+              {contactData.services.slice(0, 5).map((service) => (
                 <li key={service.id}>
                   <Link
                     to={`/services/${service.id}`}
@@ -133,26 +133,24 @@ export const Footer = () => {
             <ul className="space-y-3.5 text-sm font-medium">
               <li className="flex items-start space-x-2.5">
                 <MapPin className="w-4 h-4 text-primary-600 shrink-0 mt-1" />
-                <span className="leading-relaxed">
-                  Koramangala, Bengaluru, Karnataka
-                </span>
+                <span className="leading-relaxed">{contactData.primaryAddress}</span>
               </li>
               <li className="flex items-center space-x-2.5">
                 <Mail className="w-4 h-4 text-primary-600 shrink-0" />
                 <a
-                  href={`mailto:${siteConfig.supportEmail}`}
+                  href={`mailto:${contactData.supportEmail}`}
                   className="hover:text-primary-600 transition-colors"
                 >
-                  {siteConfig.supportEmail}
+                  {contactData.supportEmail}
                 </a>
               </li>
               <li className="flex items-center space-x-2.5">
                 <Phone className="w-4 h-4 text-primary-600 shrink-0" />
                 <a
-                  href={`tel:${siteConfig.phoneNumbers[0].replace(/\s+/g, "")}`}
+                  href={`tel:${contactData.phone?.[0]?.phone?.replace(/\s+/g, "") || ""}`}
                   className="hover:text-primary-600 transition-colors"
                 >
-                  {siteConfig.phoneNumbers[0]}
+                  {contactData.phone?.[0]?.phone}
                 </a>
               </li>
             </ul>
@@ -196,7 +194,7 @@ export const Footer = () => {
         {/* Footer Bottom (Certifications + Copyright) */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-xs font-medium text-text-sub">
-            &copy; {new Date().getFullYear()} {siteConfig.companyName}. All
+            &copy; {new Date().getFullYear()} {contactData.companyName}. All
             rights reserved.
           </p>
 

@@ -1,13 +1,14 @@
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "../components/ContactForm";
 import { SEO } from "@/components/SEO";
-import { siteConfig } from "../config/siteConfig";
+import { useContactData } from "../hooks/useContactData";
 
 export const Contact = () => {
+  const contactData = useContactData();
   const contactFaqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: siteConfig.faqs.slice(0, 4).map((faq) => ({
+    mainEntity: contactData.faqs.slice(0, 4).map((faq) => ({
       "@type": "Question",
       name: faq.question,
       acceptedAnswer: {
@@ -22,7 +23,7 @@ export const Contact = () => {
       <SEO
         title="Contact Us & Book Demo"
         description="Contact OOMS to schedule a live demo, discuss implementation, or plan a secure migration for your professional services firm."
-        canonicalUrl={`${siteConfig.websiteUrl}/contact`}
+        canonicalUrl={`${contactData.websiteUrl}/contact`}
         schema={contactFaqSchema}
         breadcrumbs={[
           { name: "Home", item: "/" },
@@ -58,13 +59,14 @@ export const Contact = () => {
                     <h3 className="mb-1.5 text-[10px] font-black uppercase tracking-widest text-text-sub">
                       Call Us
                     </h3>
-                    {siteConfig.phoneNumbers.map((number) => (
+                    {contactData.phone.map((item, index) => (
                       <a
-                        key={number}
-                        href={`tel:${number.replace(/\s+/g, "")}`}
+                        key={`${item.type}-${index}`}
+                        href={`tel:${item.phone.replace(/\s+/g, "")}`}
                         className="block text-base font-black text-foreground transition hover:text-primary-600"
                       >
-                        {number}
+                        {item.type.charAt(0).toUpperCase() + item.type.slice(1)}:{" "}
+                        {item.phone}
                       </a>
                     ))}
                   </div>
@@ -76,18 +78,16 @@ export const Contact = () => {
                     <h3 className="mb-1.5 text-[10px] font-black uppercase tracking-widest text-text-sub">
                       Email Inquiries
                     </h3>
-                    <a
-                      href={`mailto:${siteConfig.supportEmail}`}
-                      className="block text-base font-black text-foreground transition hover:text-primary-600"
-                    >
-                      Support: {siteConfig.supportEmail}
-                    </a>
-                    <a
-                      href={`mailto:${siteConfig.salesEmail}`}
-                      className="block text-base font-black text-foreground transition hover:text-primary-600"
-                    >
-                      Sales: {siteConfig.salesEmail}
-                    </a>
+                    {contactData.email.map((item, index) => (
+                      <a
+                        key={`${item.type}-${index}`}
+                        href={`mailto:${item.email}`}
+                        className="block text-base font-black text-foreground transition hover:text-primary-600"
+                      >
+                        {item.type.charAt(0).toUpperCase() + item.type.slice(1)}:{" "}
+                        {item.email}
+                      </a>
+                    ))}
                   </div>
                 </div>
 
@@ -97,9 +97,15 @@ export const Contact = () => {
                     <h3 className="mb-1.5 text-[10px] font-black uppercase tracking-widest text-text-sub">
                       Office Location
                     </h3>
-                    <p className="text-base font-black leading-relaxed text-foreground">
-                      {siteConfig.address}
-                    </p>
+                    {contactData.address.map((item, index) => (
+                      <p
+                        key={`${item.type}-${index}`}
+                        className="text-base font-black leading-relaxed text-foreground"
+                      >
+                        {item.type.charAt(0).toUpperCase() + item.type.slice(1)}:{" "}
+                        {item.address}
+                      </p>
+                    ))}
                   </div>
                 </div>
 
@@ -113,11 +119,11 @@ export const Contact = () => {
                       Business Hours
                     </h3>
                     <p className="text-sm font-bold leading-relaxed text-foreground">
-                      {siteConfig.businessHours.weekdays}
+                      {contactData.businessHours.weekdays}
                       <br />
-                      {siteConfig.businessHours.saturday}
+                      {contactData.businessHours.saturday}
                       <br />
-                      {siteConfig.businessHours.sunday}
+                      {contactData.businessHours.sunday}
                     </p>
                   </div>
                 </div>
@@ -129,7 +135,7 @@ export const Contact = () => {
                 Common Questions
               </h2>
               <div className="mt-6 space-y-4">
-                {siteConfig.faqs.slice(0, 3).map((faq) => (
+                {contactData.faqs.slice(0, 3).map((faq) => (
                   <details
                     key={faq.question}
                     className="group rounded-[24px] border border-border bg-muted/50 p-5 transition-all duration-300 hover:border-primary-400"
@@ -159,7 +165,7 @@ export const Contact = () => {
           </h2>
           <div className="relative z-10 h-[500px] overflow-hidden rounded-[48px] border border-border shadow-2xl shadow-foreground/5">
             <iframe
-              src={siteConfig.googleMapsEmbedUrl}
+              src={contactData.googleMapsEmbedUrl}
               className="h-full w-full border-0 grayscale hover:grayscale-0 transition-all duration-700"
               allowFullScreen
               loading="lazy"

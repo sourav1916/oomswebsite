@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, CheckCircle2, ShieldCheck, HelpCircle } from "lucide-react";
-import { siteConfig } from "../config/siteConfig";
+import { useContactData } from "../hooks/useContactData";
 import { SEO } from "@/components/SEO";
 import { LucideIcon } from "../components/LucideIcon";
 
 export const ServiceDetail = () => {
+  const contactData = useContactData();
   const { slug } = useParams();
-  const service = siteConfig.services.find((s) => s.id === slug);
+  const service = contactData.services.find((s) => s.id === slug);
 
   // Form states for the service-specific inquiry
   const [formData, setFormData] = useState({
