@@ -1,6 +1,5 @@
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
-import { ContactForm } from "../components/ContactForm";
-import { SEO } from "@/components/SEO";
+import { SEO } from "../components/SEO";
 import { useContactData } from "../hooks/useContactData";
 
 export const Contact = () => {
@@ -152,9 +151,32 @@ export const Contact = () => {
             </div>
           </aside>
 
-          <section className="lg:col-span-7">
-            <div className="rounded-[40px] border border-border bg-surface p-8 shadow-2xl shadow-foreground/5 dark:border-slate-800 dark:bg-slate-900 sm:p-10">
-              <ContactForm />
+          <section className="lg:col-span-7 space-y-8">
+            <div className="rounded-[40px] border border-border bg-surface p-8 shadow-2xl shadow-foreground/5 dark:border-slate-800 dark:bg-slate-900 sm:p-10 space-y-6">
+              <h2 className="font-heading text-2xl font-black text-foreground tracking-tight">
+                How to Reach Us
+              </h2>
+              <p className="text-sm leading-relaxed text-text-sub font-medium">
+                Use the contact details on the left to call, email, or visit our
+                office. For product help, please include your company name,
+                preferred module, and a short description of your request.
+              </p>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <a
+                  href={`mailto:${contactData.supportEmail}`}
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary-600 px-5 py-3 font-heading text-sm font-bold text-white transition hover:bg-primary-700"
+                >
+                  <Mail className="h-4 w-4" />
+                  Email Support
+                </a>
+                <a
+                  href={`tel:${contactData.phone?.[0]?.phone?.replace(/\s+/g, "") || ""}`}
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-background px-5 py-3 font-heading text-sm font-bold text-foreground transition hover:bg-surface-hover"
+                >
+                  <Phone className="h-4 w-4" />
+                  Call Sales
+                </a>
+              </div>
             </div>
           </section>
         </div>

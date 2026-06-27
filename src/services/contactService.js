@@ -1,23 +1,14 @@
-import { httpClient } from "../api/httpClient";
-
-export const submitContactInquiry = async (payload) => {
-  if (import.meta.env.VITE_ENABLE_MOCK_API !== "false") {
-    await new Promise((resolve) => {
-      window.setTimeout(resolve, 900);
-    });
-
-    return {
-      id: `lead-${Date.now()}`,
-      status: "received",
-      message: "Your consultation request has been received.",
-    };
-  }
-
-  const { data } = await httpClient.post("/contact-us", payload);
-  return data;
-};
+import { siteConfig } from "../config/siteConfig";
+import apiCall from "../utils/apiCall";
 
 export const getContactDetails = async () => {
-  const { data } = await httpClient.get("/contact");
-  return data.data;
+  const response = await apiCall("/contact", "GET");
+  if (!response.ok) {
+    throw new Error("Failed to load contact details");
+  }
+
+  const payload = await response.json();
+  return payload?.data ?? payload ?? siteConfig;
 };
+
+export default getContactDetails;

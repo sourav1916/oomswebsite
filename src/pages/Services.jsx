@@ -7,7 +7,7 @@ import {
   Mail,
   Settings,
 } from "lucide-react";
-import { SEO } from "@/components/SEO";
+import { SEO } from "../components/SEO";
 import { useContactData } from "../hooks/useContactData";
 import { LucideIcon } from "../components/LucideIcon";
 
@@ -62,9 +62,10 @@ export const Services = () => {
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {contactData.services.map((service) => (
-            <div
+            <Link
               key={service.id}
-              className="group p-8 sm:p-10 rounded-[32px] bg-surface border border-border shadow-xl shadow-foreground/5 flex flex-col justify-between transition-all duration-500 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2"
+              to={service.path}
+              className="group block p-8 sm:p-10 rounded-[32px] bg-surface border border-border shadow-xl shadow-foreground/5 flex flex-col justify-between transition-all duration-500 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
             >
               <div className="space-y-8">
                 <div className="flex items-center justify-between">
@@ -100,15 +101,12 @@ export const Services = () => {
               </div>
 
               <div className="pt-8 border-t border-border mt-10 flex items-center justify-between">
-                <Link
-                  to={service.path}
-                  className="inline-flex items-center space-x-2 text-sm font-black text-primary-600 dark:text-primary-400 hover:text-primary-800 transition-colors uppercase tracking-widest"
-                >
+                <span className="inline-flex items-center space-x-2 text-sm font-black text-primary-600 dark:text-primary-400 transition-colors uppercase tracking-widest">
                   <span>Explore module details</span>
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

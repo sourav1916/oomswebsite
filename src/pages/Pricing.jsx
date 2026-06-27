@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { SEO } from "@/components/SEO";
+import { SEO } from "../components/SEO";
 import { PricingSection } from "../components/sections/PricingSection";
 
 const Pricing = () => {

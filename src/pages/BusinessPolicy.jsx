@@ -15,7 +15,7 @@ import {
   ArrowRight,
   ExternalLink,
 } from "lucide-react";
-import { SEO } from "@/components/SEO";
+import { SEO } from "../components/SEO";
 
 const sections = [
   {
@@ -128,8 +128,8 @@ const BusinessPolicy = () => {
       />
 
       {/* Hero Header */}
-      <section className="relative pt-24 pb-16 overflow-hidden bg-muted">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] dark:opacity-20" />
+      <section className="relative pt-24 pb-16 overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900">
+        <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_top,_rgba(37,99,235,0.35),transparent_38%)] dark:opacity-20" />
         <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary-600/10 to-transparent dark:from-primary-600/20" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -138,14 +138,14 @@ const BusinessPolicy = () => {
             animate={{ opacity: 1, y: 0 }}
             className="space-y-6"
           >
-            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-700 dark:text-primary-400 text-xs font-black uppercase tracking-[0.2em]">
+            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-primary-600/10 border border-primary-600/20 text-primary-700 dark:text-primary-400 text-xs font-black uppercase tracking-[0.2em] shadow-sm backdrop-blur-sm">
               <Scale className="w-3.5 h-3.5" />
               <span>Legal Center</span>
             </div>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-heading font-black text-foreground tracking-tighter leading-[0.95]">
               Business <span className="text-primary-600">Policy</span>
             </h1>
-            <p className="text-text-sub text-lg sm:text-xl max-w-2xl leading-relaxed font-medium">
+            <p className="text-slate-600 dark:text-slate-300 text-lg sm:text-xl max-w-2xl leading-relaxed font-medium">
               Updated July 1, 2025. This document outlines our commitment to
               transparency, security, and professional integrity in every
               interaction.
@@ -171,12 +171,12 @@ const BusinessPolicy = () => {
                       onClick={() => scrollToSection(s.id)}
                       className={`w-full flex items-center justify-between px-5 py-3.5 rounded-2xl text-sm font-black transition-all duration-500 group ${activeSection === s.id
                         ? "bg-primary-600 text-white shadow-xl shadow-primary-600/25"
-                        : "text-text-sub hover:text-foreground hover:bg-muted"
+                        : "text-slate-600 hover:text-slate-950 hover:bg-white dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-900"
                         }`}
                     >
                       <div className="flex items-center space-x-4">
                         <div
-                          className={`p-1.5 rounded-lg transition-colors ${activeSection === s.id ? "bg-white/20" : "bg-muted dark:bg-slate-800 group-hover:bg-border"}`}
+                          className={`p-1.5 rounded-lg transition-colors ${activeSection === s.id ? "bg-white/20" : "bg-slate-100 dark:bg-slate-800 group-hover:bg-slate-200 dark:group-hover:bg-slate-700"}`}
                         >
                           {cloneElement(s.icon, { className: "w-4 h-4" })}
                         </div>
@@ -191,7 +191,7 @@ const BusinessPolicy = () => {
               </div>
 
               {/* Quick Contact Card */}
-              <div className="bg-muted rounded-[40px] p-10 text-white relative overflow-hidden shadow-2xl shadow-primary-600/30">
+              <div className="bg-slate-900 dark:bg-slate-900 rounded-[40px] p-10 text-white relative overflow-hidden shadow-2xl shadow-slate-900/30 border border-white/5">
                 <h4 className="font-heading font-black text-lg leading-tight tracking-tight">
                   Need Legal Clarification?
                 </h4>
@@ -233,7 +233,7 @@ const BusinessPolicy = () => {
                   </h2>
                 </div>
 
-                <div className="bg-surface border border-border rounded-[48px] p-8 sm:p-12 shadow-2xl shadow-foreground/5 hover:border-primary-500/30 transition-all duration-500 relative overflow-hidden group">
+                <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-[48px] p-8 sm:p-12 shadow-xl shadow-slate-200/40 dark:shadow-slate-950/30 hover:border-primary-500/30 transition-all duration-500 relative overflow-hidden group">
                   <div
                     className={`absolute top-0 right-0 w-48 h-48 opacity-[0.04] transition-transform duration-1000 group-hover:scale-125 group-hover:rotate-12 ${section.color.split(" ")[0]}`}
                   >
@@ -243,7 +243,7 @@ const BusinessPolicy = () => {
                   </div>
 
                   {typeof section.content === "string" ? (
-                    <p className="text-foreground leading-relaxed text-xl font-bold border-l-4 border-primary-600/30 pl-8">
+                    <p className="text-slate-800 dark:text-slate-100 leading-relaxed text-xl font-bold border-l-4 border-primary-600/30 pl-8">
                       {section.content}
                     </p>
                   ) : (
@@ -251,12 +251,12 @@ const BusinessPolicy = () => {
                       {section.content.map((item, i) => (
                         <div
                           key={i}
-                          className="flex items-start space-x-5 p-6 rounded-[24px] bg-muted/30 border border-border/50 group/item transition-all duration-500 hover:bg-background hover:shadow-xl hover:border-primary-500/20"
+                          className="flex items-start space-x-5 p-6 rounded-[24px] bg-slate-50 border border-slate-200/70 dark:bg-slate-950/40 dark:border-slate-800/70 group/item transition-all duration-500 hover:bg-white dark:hover:bg-slate-900 hover:shadow-xl hover:border-primary-500/20"
                         >
                           <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center text-xs font-black shadow-lg shadow-primary-600/20">
                             {i + 1}
                           </div>
-                          <span className="text-text-sub text-base leading-relaxed font-bold group-hover/item:text-foreground transition-colors">
+                          <span className="text-slate-600 dark:text-slate-300 text-base leading-relaxed font-bold group-hover/item:text-slate-950 dark:group-hover/item:text-white transition-colors">
                             {item}
                           </span>
                         </div>
@@ -302,21 +302,21 @@ const BusinessPolicy = () => {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="bg-surface border border-border rounded-[40px] p-10 shadow-2xl shadow-foreground/5 relative flex flex-col justify-between"
+                className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-[40px] p-10 shadow-xl shadow-slate-200/40 dark:shadow-slate-950/30 relative flex flex-col justify-between"
               >
                 <h3 className="text-3xl font-heading font-black text-foreground tracking-tighter mb-8 leading-tight">
                   Official Contact
                 </h3>
                 <div className="space-y-8">
                   <div className="flex items-start space-x-5">
-                    <div className="p-3.5 rounded-2xl bg-muted border border-border shadow-sm">
+                      <div className="p-3.5 rounded-2xl bg-slate-100 border border-slate-200 shadow-sm dark:bg-slate-800 dark:border-slate-700">
                       <MapPin className="w-6 h-6 text-primary-600" />
                     </div>
                     <div>
                       <h4 className="text-[10px] font-black text-text-sub uppercase tracking-widest mb-1.5">
                         Registered Office
                       </h4>
-                      <p className="text-base text-foreground font-black leading-relaxed">
+                      <p className="text-base text-slate-900 dark:text-slate-100 font-black leading-relaxed">
                         H. No. 356, Vill. Nagajan Niz, Kharupetiaghat, Darrang,
                         Assam 784115
                       </p>
@@ -324,15 +324,15 @@ const BusinessPolicy = () => {
                   </div>
 
                   <div className="grid grid-cols-1 gap-4">
-                    <div className="flex items-center space-x-5 p-4 rounded-2xl bg-muted border border-border hover:border-primary-500/20 transition-all duration-500 shadow-sm">
+                    <div className="flex items-center space-x-5 p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-primary-500/20 transition-all duration-500 shadow-sm dark:bg-slate-950 dark:border-slate-800">
                       <Mail className="w-5 h-5 text-primary-600" />
-                      <span className="text-sm font-black text-foreground truncate">
+                      <span className="text-sm font-black text-slate-900 dark:text-slate-100 truncate">
                         contact@onesaas.in
                       </span>
                     </div>
-                    <div className="flex items-center space-x-5 p-4 rounded-2xl bg-muted border border-border hover:border-primary-500/20 transition-all duration-500 shadow-sm">
+                    <div className="flex items-center space-x-5 p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-primary-500/20 transition-all duration-500 shadow-sm dark:bg-slate-950 dark:border-slate-800">
                       <Phone className="w-5 h-5 text-primary-600" />
-                      <span className="text-sm font-black text-foreground">
+                      <span className="text-sm font-black text-slate-900 dark:text-slate-100">
                         +91-7002695990
                       </span>
                     </div>
@@ -346,7 +346,7 @@ const BusinessPolicy = () => {
 
       {/* Modern Bottom CTA */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-border">
-        <div className="max-w-6xl mx-auto rounded-[48px] bg-foreground p-12 sm:p-16 lg:p-20 text-center relative overflow-hidden shadow-2xl shadow-foreground/20 dark:bg-slate-900">
+        <div className="max-w-6xl mx-auto rounded-[48px] bg-slate-950 p-12 sm:p-16 lg:p-20 text-center relative overflow-hidden shadow-2xl shadow-slate-950/20 dark:bg-slate-900">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary-600/20 via-transparent to-transparent" />
           <div className="relative z-10 max-w-3xl mx-auto space-y-10">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-whitetext-background tracking-tighter leading-[0.95]">

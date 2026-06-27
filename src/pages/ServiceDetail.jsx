@@ -1,23 +1,13 @@
-import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, CheckCircle2, ShieldCheck, HelpCircle } from "lucide-react";
+import { ArrowLeft, CheckCircle2, HelpCircle } from "lucide-react";
 import { useContactData } from "../hooks/useContactData";
-import { SEO } from "@/components/SEO";
+import { SEO } from "../components/SEO";
 import { LucideIcon } from "../components/LucideIcon";
 
 export const ServiceDetail = () => {
   const contactData = useContactData();
   const { slug } = useParams();
   const service = contactData.services.find((s) => s.id === slug);
-
-  // Form states for the service-specific inquiry
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    firm: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
 
   if (!service) {
     return (
@@ -41,15 +31,6 @@ export const ServiceDetail = () => {
       </div>
     );
   }
-
-  const handleInquiry = (e) => {
-    e.preventDefault();
-    if (formData.name && formData.email) {
-      setSubmitted(true);
-      setFormData({ name: "", email: "", phone: "", firm: "" });
-      setTimeout(() => setSubmitted(false), 6000);
-    }
-  };
 
   return (
     <>
@@ -127,96 +108,6 @@ export const ServiceDetail = () => {
             </div>
           </div>
 
-          {/* Sidebar Inquiry Capture */}
-          <div className="lg:col-span-4 sticky top-24">
-            <div className="p-8 bg-surface border border-border rounded-[40px] shadow-2xl shadow-foreground/5 space-y-8">
-              <div className="space-y-3 text-center pb-6 border-b border-border">
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
-                  Firm Onboarding
-                </span>
-                <h3 className="font-heading font-black text-xl text-foreground tracking-tight leading-tight">
-                  Schedule Demo For This Module
-                </h3>
-              </div>
-
-              {submitted ? (
-                <div className="p-8 text-center space-y-5 bg-success/5 border border-success/10 rounded-[32px]">
-                  <ShieldCheck className="w-16 h-16 text-success mx-auto" />
-                  <h4 className="font-heading font-black text-lg text-foreground">
-                    Request Received
-                  </h4>
-                  <p className="text-text-sub text-sm leading-relaxed font-medium">
-                    We will email your firm at the provided address to configure
-                    your Sandbox credentials.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleInquiry} className="space-y-5">
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-text-sub uppercase tracking-widest ml-1">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                      className="w-full bg-muted/50 dark:bg-slate-950/60 rounded-2xl px-4 py-3 text-sm text-foreground border border-border focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-text-sub uppercase tracking-widest ml-1">
-                      Work Email
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      className="w-full bg-muted/50 dark:bg-slate-950/60 rounded-2xl px-4 py-3 text-sm text-foreground border border-border focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-text-sub uppercase tracking-widest ml-1">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) =>
-                        setFormData({ ...formData, phone: e.target.value })
-                      }
-                      className="w-full bg-muted/50 dark:bg-slate-950/60 rounded-2xl px-4 py-3 text-sm text-foreground border border-border focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-text-sub uppercase tracking-widest ml-1">
-                      Practice/Firm Name
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.firm}
-                      onChange={(e) =>
-                        setFormData({ ...formData, firm: e.target.value })
-                      }
-                      className="w-full bg-muted/50 dark:bg-slate-950/60 rounded-2xl px-4 py-3 text-sm text-foreground border border-border focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-4.5 rounded-2xl bg-primary-600 hover:bg-primary-700 text-white font-heading font-black text-xs uppercase tracking-widest transition-all shadow-xl shadow-primary-600/25 cursor-pointer active:scale-95 hover:-translate-y-0.5"
-                  >
-                    Send Request
-                  </button>
-                </form>
-              )}
-            </div>
-          </div>
         </div>
       </div>
     </>

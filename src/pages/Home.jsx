@@ -12,7 +12,7 @@ import {
   Star,
 } from "lucide-react";
 import { useContactData } from "../hooks/useContactData";
-import { SEO } from "@/components/SEO";
+import { SEO } from "../components/SEO";
 import { LucideIcon } from "../components/LucideIcon";
 import { AnimatedCounter } from "../components/AnimatedCounter";
 
@@ -135,13 +135,13 @@ export const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-4 sm:gap-5"
             >
               <a
                 href="https://ooms.in/register"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-4.5 rounded-2xl bg-primary-600 hover:bg-primary-700 text-white font-heading font-black shadow-xl shadow-primary-600/30 transition-all duration-300 hover:-translate-y-1 active:scale-95"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4.5 rounded-2xl bg-primary-600 hover:bg-primary-700 text-white font-heading font-black shadow-xl shadow-primary-600/30 transition-all duration-300 hover:-translate-y-1 active:scale-95 min-h-[56px]"
               >
                 <span>Get Started Free</span>
                 <ArrowRight className="w-5 h-5" />
@@ -150,7 +150,7 @@ export const Home = () => {
                 href="https://ooms.in/login"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4.5 rounded-2xl bg-muted hover:bg-surface-hover text-foreground border border-border font-heading font-black transition-all duration-300 hover:-translate-y-1 active:scale-95"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4.5 rounded-2xl bg-muted hover:bg-surface-hover text-foreground border border-border font-heading font-black transition-all duration-300 hover:-translate-y-1 active:scale-95 min-h-[56px]"
               >
                 Login Now
               </a>
@@ -186,48 +186,48 @@ export const Home = () => {
             }}
             className="lg:col-span-6 relative w-full max-w-lg mx-auto lg:max-w-none"
           >
-            <div className="relative rounded-[32px] overflow-hidden border border-border shadow-2xl dark:shadow-slate-950/60 bg-white/80 dark:bg-dark-card/80 backdrop-blur-2xl p-6 sm:p-8 select-none animate-float">
+            <div className="relative rounded-[32px] overflow-hidden border border-border shadow-2xl shadow-slate-200/50 dark:shadow-slate-950/60 bg-white/85 dark:bg-slate-950/80 backdrop-blur-2xl p-5 sm:p-8 select-none animate-float">
               {/* Header mockup control bar */}
-              <div className="flex items-center justify-between pb-6 border-b border-border dark:border-slate-800/60">
+              <div className="flex items-center justify-between pb-4 sm:pb-6 border-b border-border dark:border-slate-800/60">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 rounded-full bg-red-500/80" />
                   <div className="w-3 h-3 rounded-full bg-amber-500/80" />
                   <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
                 </div>
-                <div className="px-4 py-1.5 rounded-full bg-muted dark:bg-slate-800 text-[9px] uppercase font-black tracking-[0.2em] text-text-sub">
+                <div className="px-3 sm:px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[9px] uppercase font-black tracking-[0.2em] text-slate-600 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/60">
                   OOMS Practice Dashboard
                 </div>
               </div>
 
               {/* Stat boxes inside mock */}
-              <div className="grid grid-cols-2 gap-5 py-6">
-                <div className="p-5 rounded-3xl bg-primary-50 dark:bg-primary-950/20 border border-primary-500/10">
-                  <span className="text-[9px] uppercase tracking-[0.15em] text-primary-700/70 font-black block mb-1.5">
+              <div className="grid grid-cols-2 gap-4 sm:gap-5 py-5 sm:py-6">
+                <div className="p-4 sm:p-5 rounded-3xl bg-gradient-to-br from-primary-50 to-white dark:from-primary-950/25 dark:to-slate-950 border border-primary-500/10 shadow-sm">
+                  <span className="text-[9px] uppercase tracking-[0.15em] text-primary-700/70 dark:text-primary-300/80 font-black block mb-1.5">
                     Pending Returns
                   </span>
-                  <span className="text-3xl font-black text-primary-700 dark:text-primary-400 font-heading tracking-tight">
+                  <span className="text-2xl sm:text-3xl font-black text-primary-700 dark:text-primary-300 font-heading tracking-tight">
                     142
                   </span>
                 </div>
-                <div className="p-5 rounded-3xl bg-success/5 dark:bg-emerald-950/20 border border-success/10">
-                  <span className="text-[9px] uppercase tracking-[0.15em] text-success/70 font-black block mb-1.5">
+                <div className="p-4 sm:p-5 rounded-3xl bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-950/20 dark:to-slate-950 border border-success/10 shadow-sm">
+                  <span className="text-[9px] uppercase tracking-[0.15em] text-success/70 dark:text-emerald-300/80 font-black block mb-1.5">
                     Completion Rate
                   </span>
-                  <span className="text-3xl font-black text-success dark:text-emerald-400 font-heading tracking-tight">
+                  <span className="text-2xl sm:text-3xl font-black text-success dark:text-emerald-300 font-heading tracking-tight">
                     98.4%
                   </span>
                 </div>
               </div>
 
               {/* Mock Tasks lists */}
-              <div className="space-y-4">
-                <span className="text-[9px] font-black text-text-sub uppercase tracking-[0.2em] block mb-1">
+              <div className="space-y-3 sm:space-y-4">
+                <span className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] block mb-1">
                   Live Filing Pipelines
                 </span>
                 {mockTasks.map((task, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between p-4 rounded-2xl bg-surface dark:bg-slate-950/30 border border-border hover:border-primary-500 hover:shadow-lg hover:shadow-primary-500/5 transition-all duration-300"
+                    className="flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-white/90 dark:bg-slate-950/35 border border-border/80 dark:border-slate-800 hover:border-primary-500 hover:shadow-lg hover:shadow-primary-500/5 transition-all duration-300"
                   >
                     <div className="flex items-center space-x-4">
                       <div
@@ -237,13 +237,13 @@ export const Home = () => {
                         <h4 className="text-xs font-black text-foreground leading-none mb-1.5">
                           {task.title}
                         </h4>
-                        <span className="text-[10px] text-text-sub font-bold">
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 font-bold">
                           {task.client}
                         </span>
                       </div>
                     </div>
                     <span
-                      className={`px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-wider ${task.color.split(" ")[1]} bg-muted dark:bg-slate-800/50 border border-border dark:border-slate-700`}
+                      className={`px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-wider ${task.color.split(" ")[1]} bg-slate-100 dark:bg-slate-800/60 border border-border dark:border-slate-700`}
                     >
                       {task.status}
                     </span>
@@ -252,8 +252,8 @@ export const Home = () => {
               </div>
 
               {/* Interactive notification dialog overlay */}
-              <div className="absolute bottom-6 -right-2 sm:-right-4 py-4 px-5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 shadow-2xl shadow-emerald-600/30 text-white flex items-center space-x-4 border border-white/10 max-w-[260px]">
-                <div className="p-2 rounded-xl bg-white/20">
+              <div className="absolute bottom-4 right-3 sm:bottom-6 sm:-right-4 py-3 sm:py-4 px-4 sm:px-5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 shadow-2xl shadow-emerald-600/30 text-white flex items-center space-x-3 sm:space-x-4 border border-white/10 max-w-[240px] sm:max-w-[260px]">
+                <div className="p-2 rounded-xl bg-white/20 shrink-0">
                   <MessageSquare className="w-5 h-5 animate-pulse" />
                 </div>
                 <div>

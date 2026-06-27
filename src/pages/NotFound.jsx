@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FileQuestion, ArrowRight } from "lucide-react";
-import { SEO } from "@/components/SEO";
+import { SEO } from "../components/SEO";
 
 export const NotFound = () => {
   return (

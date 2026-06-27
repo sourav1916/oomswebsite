@@ -1,12 +1,9 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Layers,
   Mail,
   Phone,
   MapPin,
-  Send,
-  CheckCircle2,
   Linkedin,
   Twitter,
   Facebook,
@@ -15,17 +12,7 @@ import {
 import { useContactData } from "../hooks/useContactData";
 
 export const Footer = () => {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const contactData = useContactData();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubmitted(true);
-      setEmail("");
-      setTimeout(() => setSubmitted(false), 5000);
-    }
-  };
 
   const socialIcons = {
     linkedin: <Linkedin className="w-4 h-4" />,
@@ -155,38 +142,15 @@ export const Footer = () => {
               </li>
             </ul>
 
-            {/* Newsletter form */}
-            <div className="pt-2">
-              <h4 className="font-heading font-bold text-[10px] text-foreground uppercase tracking-wider mb-3">
+            {/* Newsletter / updates CTA */}
+            <div className="pt-2 space-y-3">
+              <h4 className="font-heading font-bold text-[10px] text-foreground uppercase tracking-wider">
                 Regulatory Updates Newsletter
               </h4>
-              <form
-                onSubmit={handleSubmit}
-                className="flex relative items-center"
-              >
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter firm email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-muted text-xs text-foreground rounded-xl pl-4 pr-10 py-3 border border-border focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20"
-                />
-
-                <button
-                  type="submit"
-                  className="absolute right-1.5 p-2 rounded-lg bg-primary-600 hover:bg-primary-700 text-white transition-colors cursor-pointer shadow-md shadow-primary-600/20"
-                  aria-label="Subscribe"
-                >
-                  <Send className="w-4 h-4" />
-                </button>
-              </form>
-              {submitted && (
-                <p className="text-xs text-emerald-600 mt-2 flex items-center space-x-1 font-bold">
-                  <CheckCircle2 className="w-3 h-3" />
-                  <span>Subscribed successfully!</span>
-                </p>
-              )}
+              <p className="text-sm leading-relaxed text-text-sub font-medium">
+                Stay updated through our support email and product announcements
+                when new compliance features roll out.
+              </p>
             </div>
           </div>
         </div>
