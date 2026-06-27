@@ -11,6 +11,9 @@ export const Navbar = () => {
   const { scrollYProgress } = useScroll();
   const { theme, toggleTheme } = useTheme();
 
+  const loginUrl = import.meta.env.REACT_APP_OOMS_LOGIN_URL || "https://ooms.in/login";
+  const registerUrl = import.meta.env.REACT_APP_OOMS_REGISTER_URL || "https://ooms.in/register";
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
@@ -190,7 +193,7 @@ export const Navbar = () => {
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <a
-                  href="https://ooms.in/login"
+                  href={loginUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-background px-5 py-3.5 font-heading text-sm font-bold text-foreground transition hover:bg-surface-hover active:scale-[0.99]"
@@ -198,7 +201,7 @@ export const Navbar = () => {
                   Login
                 </a>
                 <a
-                  href="https://ooms.in/register"
+                  href={registerUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-primary-600 px-5 py-3.5 font-heading text-sm font-bold text-white shadow-lg shadow-primary-600/15 transition hover:bg-primary-700 active:scale-[0.99]"

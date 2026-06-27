@@ -35,7 +35,7 @@ export const Contact = () => {
           <span className="font-heading text-xs font-black uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
             Connect With Us
           </span>
-          <h1 className="font-heading text-4xl font-black leading-[0.95] text-foreground sm:text-6xl tracking-tighter">
+          <h1 className="font-heading text-4xl font-black leading-[0.95] text-foreground sm:text-5xl tracking-tighter">
             Schedule a Live Platform Demonstration
           </h1>
           <p className="text-lg leading-relaxed text-text-sub sm:text-xl font-medium">

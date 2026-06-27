@@ -18,7 +18,7 @@ export const Industries = () => {
         <span className="text-xs font-black uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400 font-heading">
           Target Sectors
         </span>
-        <h1 className="font-heading font-black text-4xl sm:text-6xl text-foreground leading-[0.95] tracking-tighter">
+        <h1 className="font-heading font-black text-3xl sm:text-5xl text-foreground leading-[0.95] tracking-tighter">
           Tailor-Fit Workspaces for Your Profession
         </h1>
         <p className="text-text-sub text-lg leading-relaxed font-medium">

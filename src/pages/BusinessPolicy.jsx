@@ -142,7 +142,7 @@ const BusinessPolicy = () => {
               <Scale className="w-3.5 h-3.5" />
               <span>Legal Center</span>
             </div>
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-heading font-black text-foreground tracking-tighter leading-[0.95]">
+            <h1 className="text-3xl sm:text-6xl lg:text-6xl font-heading font-black text-foreground tracking-tighter leading-[0.95]">
               Business <span className="text-primary-600">Policy</span>
             </h1>
             <p className="text-slate-600 dark:text-slate-300 text-lg sm:text-xl max-w-2xl leading-relaxed font-medium">

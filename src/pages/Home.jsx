@@ -21,6 +21,9 @@ export const Home = () => {
   const [activeTab, setActiveTab] = useState(contactData.industries[0].id);
   const [openFaq, setOpenFaq] = useState(null);
 
+  const loginUrl = import.meta.env.REACT_APP_OOMS_LOGIN_URL || "https://ooms.in/login";
+  const registerUrl = import.meta.env.REACT_APP_OOMS_REGISTER_URL || "https://ooms.in/register";
+
   const toggleFaq = (idx) => {
     setOpenFaq(openFaq === idx ? null : idx);
   };
@@ -109,7 +112,7 @@ export const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-heading font-black text-4xl sm:text-5xl lg:text-7xl tracking-tighter leading-[0.95] text-foreground"
+              className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl tracking-tighter leading-[0.95] text-foreground"
             >
               Automate Your Practice.{" "}
               <span className="bg-gradient-to-r from-primary-600 to-indigo-500 bg-clip-text text-transparent">
@@ -138,7 +141,7 @@ export const Home = () => {
               className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-4 sm:gap-5"
             >
               <a
-                href="https://ooms.in/register"
+                href={registerUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4.5 rounded-2xl bg-primary-600 hover:bg-primary-700 text-white font-heading font-black shadow-xl shadow-primary-600/30 transition-all duration-300 hover:-translate-y-1 active:scale-95 min-h-[56px]"
@@ -147,7 +150,7 @@ export const Home = () => {
                 <ArrowRight className="w-5 h-5" />
               </a>
               <a
-                href="https://ooms.in/login"
+                href={loginUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4.5 rounded-2xl bg-muted hover:bg-surface-hover text-foreground border border-border font-heading font-black transition-all duration-300 hover:-translate-y-1 active:scale-95 min-h-[56px]"
@@ -367,11 +370,10 @@ export const Home = () => {
               <button
                 key={ind.id}
                 onClick={() => setActiveTab(ind.id)}
-                className={`px-7 py-4 rounded-2xl font-heading font-black text-[10px] uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer hover:-translate-y-1 active:scale-95 ${
-                  activeTab === ind.id
+                className={`px-7 py-4 rounded-2xl font-heading font-black text-[10px] uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer hover:-translate-y-1 active:scale-95 ${activeTab === ind.id
                     ? "bg-primary-600 text-white shadow-2xl shadow-primary-600/30"
                     : "bg-surface text-text-sub border border-border hover:border-primary-400 hover:text-primary-600"
-                }`}
+                  }`}
               >
                 {ind.name.split(" (")[0]}
               </button>
