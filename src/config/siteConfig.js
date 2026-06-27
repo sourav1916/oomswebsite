@@ -4,6 +4,8 @@ export const siteConfig = {
   tagline: "The Ultimate Cloud ERP & CRM for Tax & Accounting Professionals",
   description: "Automate task management, client relationships, staff attendance, billing, and bulk communications on India's most secure cloud-based office management platform built for CAs, CSs, CMAs, Advocates, and Tax Consultants.",
   websiteUrl: "https://ooms.in",
+  loginUrl: "https://ooms.in/login",
+  registerUrl: "https://ooms.in/register",
   email: [
     {
       type: "sale",

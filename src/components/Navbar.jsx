@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { Layers, Menu, MoonStar, SunMedium, X, ArrowRight } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
+import { siteConfig } from "../config/siteConfig";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,8 +12,8 @@ export const Navbar = () => {
   const { scrollYProgress } = useScroll();
   const { theme, toggleTheme } = useTheme();
 
-  const loginUrl = import.meta.env.REACT_APP_OOMS_LOGIN_URL || "https://ooms.in/login";
-  const registerUrl = import.meta.env.REACT_APP_OOMS_REGISTER_URL || "https://ooms.in/register";
+  const loginUrl = process.env.REACT_APP_OOMS_LOGIN_URL || siteConfig.loginUrl;
+  const registerUrl = process.env.REACT_APP_OOMS_REGISTER_URL || siteConfig.registerUrl;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,8 +50,8 @@ export const Navbar = () => {
     <div className="relative">
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-            ? "bg-background/95 py-3 shadow-lg shadow-foreground/5 ring-1 ring-border backdrop-blur-xl dark:bg-slate-950/85 dark:shadow-slate-950/25 dark:ring-slate-800"
-            : "bg-background/90 py-4 shadow-sm shadow-foreground/5 ring-1 ring-border/70 backdrop-blur-xl dark:bg-slate-950/75 dark:ring-slate-800/80"
+          ? "bg-background/95 py-3 shadow-lg shadow-foreground/5 ring-1 ring-border backdrop-blur-xl dark:bg-slate-950/85 dark:shadow-slate-950/25 dark:ring-slate-800"
+          : "bg-background/90 py-4 shadow-sm shadow-foreground/5 ring-1 ring-border/70 backdrop-blur-xl dark:bg-slate-950/75 dark:ring-slate-800/80"
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3">
@@ -76,8 +77,8 @@ export const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className={`relative px-3 xl:px-4 py-2 rounded-xl font-heading text-[13px] xl:text-sm font-bold tracking-wide transition-all duration-300 text-center leading-tight ${isActive(link.path)
-                    ? "text-primary-600 bg-primary-50/50 dark:bg-primary-950/30"
-                    : "text-text-sub dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-surface-hover dark:hover:bg-slate-900/60 whitespace-nowrap"
+                  ? "text-primary-600 bg-primary-50/50 dark:bg-primary-950/30"
+                  : "text-text-sub dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-surface-hover dark:hover:bg-slate-900/60 whitespace-nowrap"
                   }`}
               >
                 {link.name}
@@ -106,7 +107,7 @@ export const Navbar = () => {
               )}
             </button>
             <a
-              href="https://ooms.in/login"
+              href={loginUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 xl:px-5 py-2.5 rounded-xl font-heading text-sm font-bold text-text-sub border border-border hover:border-primary-400 hover:text-primary-600 transition-all duration-300 cursor-pointer"
@@ -114,7 +115,7 @@ export const Navbar = () => {
               <span>Login</span>
             </a>
             <a
-              href="https://ooms.in/register"
+              href={registerUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 xl:px-5 py-2.5 rounded-xl font-heading text-sm font-bold bg-primary-600 hover:bg-primary-700 active:bg-primary-800 text-white shadow-lg shadow-primary-600/20 hover:shadow-primary-600/30 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
@@ -181,8 +182,8 @@ export const Navbar = () => {
                     to={link.path}
                     onClick={() => setIsOpen(false)}
                     className={`flex items-center justify-between rounded-2xl px-4 py-3.5 font-heading text-sm font-bold transition-all duration-200 ${isActive(link.path)
-                        ? "bg-primary-600 text-white shadow-lg shadow-primary-600/15"
-                        : "text-foreground dark:text-slate-200 hover:bg-surface-hover dark:hover:bg-slate-800"
+                      ? "bg-primary-600 text-white shadow-lg shadow-primary-600/15"
+                      : "text-foreground dark:text-slate-200 hover:bg-surface-hover dark:hover:bg-slate-800"
                       }`}
                   >
                     <span>{link.name}</span>

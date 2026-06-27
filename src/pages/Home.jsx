@@ -15,14 +15,15 @@ import { useContactData } from "../hooks/useContactData";
 import { SEO } from "../components/SEO";
 import { LucideIcon } from "../components/LucideIcon";
 import { AnimatedCounter } from "../components/AnimatedCounter";
+import { siteConfig } from "../config/siteConfig";
 
 export const Home = () => {
   const contactData = useContactData();
   const [activeTab, setActiveTab] = useState(contactData.industries[0].id);
   const [openFaq, setOpenFaq] = useState(null);
 
-  const loginUrl = import.meta.env.REACT_APP_OOMS_LOGIN_URL || "https://ooms.in/login";
-  const registerUrl = import.meta.env.REACT_APP_OOMS_REGISTER_URL || "https://ooms.in/register";
+  const loginUrl = process.env.REACT_APP_OOMS_LOGIN_URL || siteConfig.loginUrl;
+  const registerUrl = process.env.REACT_APP_OOMS_REGISTER_URL || siteConfig.registerUrl;
 
   const toggleFaq = (idx) => {
     setOpenFaq(openFaq === idx ? null : idx);
